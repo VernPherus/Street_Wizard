@@ -1,0 +1,3 @@
+repository "Street_Wizard@18967685128976@cloud"
+  path "/"
+    smartbranch "/main"

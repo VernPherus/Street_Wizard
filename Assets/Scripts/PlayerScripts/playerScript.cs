@@ -9,6 +9,7 @@ public class player_Movement : MonoBehaviour
     [Header("Settings")]
     private CharacterController controller;
     private PlayerInput playerInput;
+    private PlayerControls playerInputActions;
 
     [Header("Movement")]
     private float playerSpeed;
@@ -38,10 +39,20 @@ public class player_Movement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
 
-        PlayerControls playerInputActions = new PlayerControls();
+        playerInputActions = new PlayerControls();
         playerInputActions.Player.Enable();
         playerInputActions.Player.Jump.performed += Jump;
+        playerInputActions.Player.Move.performed += MovementPerformed;
 
+    }
+
+    private void MovementPerformed(InputAction.CallbackContext context){
+        Debug.Log(context);
+        Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
+
+        Vector3 move = transform.right * inputVector.x + transform.forward * inputVector.y;
+        // Move player model
+        controller.Move(move * walkSpeed * Time.deltaTime);
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -54,15 +65,15 @@ public class player_Movement : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-
-    }
-
-
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
+
+        Vector3 move = transform.right * inputVector.x + transform.forward * inputVector.y;
+        // Move player model
+        controller.Move(move * walkSpeed * Time.deltaTime);
 
         Gravity();
     }
