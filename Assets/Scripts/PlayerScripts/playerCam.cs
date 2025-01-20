@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 
 public class player_Cam : MonoBehaviour
 {
+
+    private CharacterController controller;
+    private PlayerControls playerMouseInput;
+
+    [Header("Camera Sens")]
     public float sensX = 100f;
     public float sensY = 100f;
 
@@ -13,13 +18,17 @@ public class player_Cam : MonoBehaviour
     float xRotation;
     float yRotation;
 
-    void Start()
+    private void Awake() {
+        controller = GetComponent<CharacterController>();
+    }
+
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }    
 
-    void Update() {
+    private void Update() {
         float mouseX = Input.GetAxis("Mouse X") * sensX * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensY * Time.deltaTime;
 
@@ -31,4 +40,5 @@ public class player_Cam : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
+
 }

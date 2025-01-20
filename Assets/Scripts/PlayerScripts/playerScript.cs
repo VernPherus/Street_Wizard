@@ -8,7 +8,6 @@ public class player_Movement : MonoBehaviour
 
     [Header("Settings")]
     private CharacterController controller;
-    private PlayerInput playerInput;
     private PlayerControls playerInputActions;
 
     [Header("Movement")]
@@ -37,13 +36,15 @@ public class player_Movement : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-        playerInput = GetComponent<PlayerInput>();
 
         playerInputActions = new PlayerControls();
         playerInputActions.Player.Enable();
         playerInputActions.Player.Jump.performed += Jump;
         playerInputActions.Player.Move.performed += MovementPerformed;
 
+    }
+
+    private void OnEnable() {
     }
 
     private void MovementPerformed(InputAction.CallbackContext context){
