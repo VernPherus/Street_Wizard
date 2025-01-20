@@ -3,10 +3,8 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Vector2 = System.Numerics.Vector2;
 
 public class playerInputHandler : MonoBehaviour
 {
@@ -86,16 +84,16 @@ public class playerInputHandler : MonoBehaviour
         // Register action when performed or canceled
 
         moveAction.performed += context => MoveInput = context.ReadValue<Vector2>();
-        moveAction.canceled += context => MoveInput = Vector2.Zero;
+        moveAction.canceled += context => MoveInput = Vector2.zero;
 
         lookAction.performed += context => LookInput = context.ReadValue<Vector2>();
-        moveAction.canceled += context => LookInput = Vector2.Zero;
+        moveAction.canceled += context => LookInput = Vector2.zero;
 
         switchWeaponsAction.performed += context => SwitchWeaponsInput = context.ReadValue<int>();
         switchWeaponsAction.canceled += context => SwitchWeaponsInput = 0;
 
         runeInputsAction.performed += context => RuneInputsInput = context.ReadValue<Vector2>();
-        runeInputsAction.canceled += context => RuneInputsInput = Vector2.Zero;
+        runeInputsAction.canceled += context => RuneInputsInput = Vector2.zero;
 
         interactAction.performed += context => InteractTriggered = true;
         interactAction.canceled += context => InteractTriggered = false;
