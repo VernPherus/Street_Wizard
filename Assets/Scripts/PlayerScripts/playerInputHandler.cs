@@ -82,6 +82,7 @@ public class playerInputHandler : MonoBehaviour
     {
 
         // Register action when performed or canceled
+        // Notes, please carefully check if you put the correct values in.
 
         moveAction.performed += context => MoveInput = context.ReadValue<Vector2>();
         moveAction.canceled += context => MoveInput = Vector2.zero;
@@ -107,8 +108,8 @@ public class playerInputHandler : MonoBehaviour
         sprintAction.performed += context => SprintValue = context.ReadValue<float>();
         sprintAction.canceled += context => SprintValue = 0f;
 
-        jumpAction.performed += context => SprintValue = context.ReadValue<float>();
-        jumpAction.canceled += context => SprintValue = 0f;
+        jumpAction.performed += context => JumpTriggered = true;
+        jumpAction.canceled += context => JumpTriggered = false;
     }
 
     private void OnEnable()

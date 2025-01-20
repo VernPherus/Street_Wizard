@@ -35,7 +35,8 @@ public class playerFPSController : MonoBehaviour
         inputHandler = playerInputHandler.Instance;
     }
 
-    private void Start() {
+    private void Start()
+    {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
