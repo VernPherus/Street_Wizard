@@ -48,10 +48,10 @@ public class playerFPSController : MonoBehaviour
 
     private void HandleRotation()
     {
-        float mouseXRotation = inputHandler.LookInput.x * mouseSensitivity;
+        float mouseXRotation = inputHandler.LookInput.x * mouseSensitivity * Time.deltaTime;
         transform.Rotate(0, mouseXRotation, 0);
-        
-        verticalRotation -= inputHandler.LookInput.y * mouseSensitivity;
+
+        verticalRotation -= inputHandler.LookInput.y * mouseSensitivity * Time.deltaTime;
         verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
 
         mainCam.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);

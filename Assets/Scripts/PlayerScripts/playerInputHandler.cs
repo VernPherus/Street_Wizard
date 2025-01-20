@@ -87,7 +87,7 @@ public class playerInputHandler : MonoBehaviour
         moveAction.canceled += context => MoveInput = Vector2.zero;
 
         lookAction.performed += context => LookInput = context.ReadValue<Vector2>();
-        moveAction.canceled += context => LookInput = Vector2.zero;
+        lookAction.canceled += context => LookInput = Vector2.zero;
 
         switchWeaponsAction.performed += context => SwitchWeaponsInput = context.ReadValue<int>();
         switchWeaponsAction.canceled += context => SwitchWeaponsInput = 0;
