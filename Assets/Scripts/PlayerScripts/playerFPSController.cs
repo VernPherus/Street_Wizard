@@ -9,7 +9,7 @@ public class playerFPSController : MonoBehaviour
 {
     [Header("Movement Speeds")]
     [SerializeField] private float walkSpeed = 3.0f;
-    [SerializeField] private float sprintMultiplier = 2.0f;
+    [SerializeField] private float sprintMultiplier = 4.0f;
     [SerializeField] private float crouchReduction = 0.5f;
 
     [Header("Jump Params")]
