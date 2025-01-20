@@ -62,7 +62,7 @@ public class playerFPSController : MonoBehaviour
     private void HandleMovement()
     {
         // if sprint value is greater than 1, we are sprinting
-        float speed = walkSpeed * (inputHandler.SprintValue > 0 ? sprintMultiplier : 1f);
+        float speed = walkSpeed * (inputHandler.SprintTriggered ? sprintMultiplier : 1f);
 
         Vector3 inputDirection = new Vector3(inputHandler.MoveInput.x, 0f, inputHandler.MoveInput.y);
         Vector3 worldDirection = transform.TransformDirection(inputDirection);
