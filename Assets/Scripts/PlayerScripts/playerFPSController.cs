@@ -8,9 +8,10 @@ using UnityEngine.TextCore.Text;
 public class playerFPSController : MonoBehaviour
 {
     [Header("Movement Speeds")]
-    [SerializeField] private float walkSpeed = 3.0f;
-    [SerializeField] private float sprintMultiplier = 4.0f;
+    [SerializeField] private float walkSpeed = 2.0f;
+    [SerializeField] private float sprintMultiplier = 6.0f;
     [SerializeField] private float crouchReduction = 0.5f;
+    [SerializeField] private float dashMultiplier = 10.0f;
 
     [Header("Jump Params")]
     [SerializeField] private float jumpForce = 5.0f;
@@ -62,7 +63,7 @@ public class playerFPSController : MonoBehaviour
     private void HandleMovement()
     {
         // if sprint value is greater than 1, we are sprinting
-        float speed = walkSpeed * (inputHandler.SprintTriggered ? sprintMultiplier : 1f);
+        float speed = walkSpeed * (inputHandler.SprintTriggered > 0.0 ? sprintMultiplier : 1f);
 
         Vector3 inputDirection = new Vector3(inputHandler.MoveInput.x, 0f, inputHandler.MoveInput.y);
         Vector3 worldDirection = transform.TransformDirection(inputDirection);

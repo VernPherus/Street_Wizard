@@ -46,7 +46,7 @@ public class playerInputHandler : MonoBehaviour
     public float FireValue { get; private set; }
     public float CrouchValue { get; private set; }
     public bool ConjureTriggered { get; private set; }
-    public bool SprintTriggered { get; private set; }
+    public float SprintTriggered { get; private set; }
     public bool JumpTriggered { get; private set; }
 
     public static playerInputHandler Instance { get; private set; }
@@ -105,8 +105,8 @@ public class playerInputHandler : MonoBehaviour
         crouchAction.performed += context => CrouchValue = context.ReadValue<float>();
         crouchAction.canceled += context => CrouchValue = 0f;
 
-        sprintAction.performed += context => SprintTriggered = true;
-        sprintAction.canceled += context => SprintTriggered = false;
+        sprintAction.performed += context => SprintTriggered = context.ReadValue<float>();
+        sprintAction.canceled += context => SprintTriggered = 0f;
 
         jumpAction.performed += context => JumpTriggered = true;
         jumpAction.canceled += context => JumpTriggered = false;
