@@ -94,4 +94,14 @@ public class playerFPSController : MonoBehaviour
             currentMovement.y -= gravity * Time.deltaTime;
         }
     }
+
+    private void Dash()
+    {
+
+    }
+
+    private void Crouch()
+    {
+
+    }
 }
