@@ -57,10 +57,13 @@ public class PlayerInputHandler : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("PlayerInputHandler instance assigned.");
         }
         else
         {
+            Debug.Log("Duplicate PlayerInputHandler detected, destroying...");
             Destroy(gameObject);
+            
         }
 
         // Find the action

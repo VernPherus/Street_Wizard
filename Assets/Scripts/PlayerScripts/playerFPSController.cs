@@ -32,14 +32,19 @@ public class PlayerFPSController : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         mainCam = Camera.main;
-
-        inputHandler = PlayerInputHandler.Instance;
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        inputHandler = PlayerInputHandler.Instance;
+        if (inputHandler == null)
+        {
+            Debug.Log("Player input handler is not assigned!");
+            return;
+        }
     }
 
     private void Update()
