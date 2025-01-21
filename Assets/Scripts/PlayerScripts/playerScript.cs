@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class player_Movement : MonoBehaviour
+public class Player_Movement : MonoBehaviour
 {
 
     [Header("Settings")]

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
 
-public class playerFPSController : MonoBehaviour
+public class PlayerFPSController : MonoBehaviour
 {
     [Header("Movement Speeds")]
     [SerializeField] private float walkSpeed = 2.0f;
@@ -23,7 +23,7 @@ public class playerFPSController : MonoBehaviour
 
     private CharacterController characterController;
     private Camera mainCam;
-    private playerInputHandler inputHandler;
+    private PlayerInputHandler inputHandler;
 
     private Vector3 currentMovement;
     private float verticalRotation;
@@ -33,7 +33,7 @@ public class playerFPSController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         mainCam = Camera.main;
 
-        inputHandler = playerInputHandler.Instance;
+        inputHandler = PlayerInputHandler.Instance;
     }
 
     private void Start()

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class playerInputHandler : MonoBehaviour
+public class PlayerInputHandler : MonoBehaviour
 {
     [Header("Input Action Asset")]
     [SerializeField] private InputActionAsset playerControls;
@@ -49,7 +49,7 @@ public class playerInputHandler : MonoBehaviour
     public float SprintTriggered { get; private set; }
     public bool JumpTriggered { get; private set; }
 
-    public static playerInputHandler Instance { get; private set; }
+    public static PlayerInputHandler Instance { get; private set; }
 
     private void Awake()
     {
