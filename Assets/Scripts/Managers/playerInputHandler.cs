@@ -25,6 +25,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private string conjure = "Conjure";
     [SerializeField] private string sprint = "Sprint";
     [SerializeField] private string jump = "Jump";
+    [SerializeField] private string dash = "Dash";
 
     private InputAction moveAction;
     private InputAction lookAction;
@@ -36,6 +37,7 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction conjureAction;
     private InputAction sprintAction;
     private InputAction jumpAction;
+    private InputAction dashAction;
 
     // Check input property
     public Vector2 MoveInput { get; private set; }
@@ -48,6 +50,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool ConjureTriggered { get; private set; }
     public float SprintTriggered { get; private set; }
     public bool JumpTriggered { get; private set; }
+    public bool DashTriggered { get; private set; }
 
     public static PlayerInputHandler Instance { get; private set; }
 
@@ -63,7 +66,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             Debug.Log("Duplicate PlayerInputHandler detected, destroying...");
             Destroy(gameObject);
-            
+
         }
 
         // Find the action
@@ -77,6 +80,7 @@ public class PlayerInputHandler : MonoBehaviour
         conjureAction = playerControls.FindActionMap(actionMapName).FindAction(conjure);
         sprintAction = playerControls.FindActionMap(actionMapName).FindAction(sprint);
         jumpAction = playerControls.FindActionMap(actionMapName).FindAction(jump);
+        dashAction = playerControls.FindActionMap(actionMapName).FindAction(dash);
 
         RegisterInputActions();
     }
@@ -113,6 +117,9 @@ public class PlayerInputHandler : MonoBehaviour
 
         jumpAction.performed += context => JumpTriggered = true;
         jumpAction.canceled += context => JumpTriggered = false;
+
+        dashAction.performed += context => DashTriggered = true;
+        dashAction.canceled += context => DashTriggered = false;
     }
 
     private void OnEnable()
@@ -126,6 +133,7 @@ public class PlayerInputHandler : MonoBehaviour
         crouchAction.Enable();
         sprintAction.Enable();
         jumpAction.Enable();
+        dashAction.Enable();
     }
 
     private void OnDisable()
@@ -139,5 +147,6 @@ public class PlayerInputHandler : MonoBehaviour
         crouchAction.Disable();
         sprintAction.Disable();
         jumpAction.Disable();
+        dashAction.Disable();
     }
 }

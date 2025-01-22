@@ -2,27 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum PlayerStates
-{
-    walking, 
-    sprinting,
-    dashing,
-    jumping, 
-    crouching
-    
-}
-
-public class Player_StateManager : MonoBehaviour
+public class PlayerDashScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

@@ -11,7 +11,8 @@ public class PlayerFPSController : MonoBehaviour
     [SerializeField] private float walkSpeed = 2.0f;
     [SerializeField] private float sprintMultiplier = 6.0f;
     [SerializeField] private float crouchReduction = 0.5f;
-    [SerializeField] private float dashMultiplier = 10.0f;
+    [SerializeField] private float dashSpeed = 10.0f;
+    [SerializeField] private float dashTime = 0.25f;
 
     [Header("Jump Params")]
     [SerializeField] private float jumpForce = 5.0f;
@@ -55,10 +56,10 @@ public class PlayerFPSController : MonoBehaviour
 
     private void HandleRotation()
     {
-        float mouseXRotation = inputHandler.LookInput.x * mouseSensitivity * Time.deltaTime;
+        float mouseXRotation = inputHandler.LookInput.x * mouseSensitivity;
         transform.Rotate(0, mouseXRotation, 0);
 
-        verticalRotation -= inputHandler.LookInput.y * mouseSensitivity * Time.deltaTime;
+        verticalRotation -= inputHandler.LookInput.y * mouseSensitivity;
         verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
 
         mainCam.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
@@ -79,6 +80,7 @@ public class PlayerFPSController : MonoBehaviour
         currentMovement.z = worldDirection.z * speed;
 
         HandleJumping();
+        HandleDash();
 
         characterController.Move(currentMovement * Time.deltaTime);
     }
@@ -100,9 +102,26 @@ public class PlayerFPSController : MonoBehaviour
         }
     }
 
-    private void Dash()
+    private void HandleDash()
     {
+        if (inputHandler.DashTriggered)
+        {
+            StartCoroutine(Dash());
+        }
+    }
 
+    IEnumerator Dash()
+    {
+        float startTime = Time.time;
+        Debug.Log("Player Dashed");
+
+        while (Time.time < startTime + dashTime)
+        {
+            characterController.Move(dashSpeed * Time.deltaTime * currentMovement);
+
+            yield return null;
+        }
+        
     }
 
     private void Crouch()
