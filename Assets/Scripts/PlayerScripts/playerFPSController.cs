@@ -13,9 +13,6 @@ public class PlayerFPSController : MonoBehaviour
     [Header("Movement Speeds")]
     [SerializeField] private float walkSpeed = 2.0f;
     [SerializeField] private float sprintMultiplier = 6.0f;
-    [SerializeField] private float crouchReduction = 0.5f;
-    // [SerializeField] private float dashSpeed = 10.0f;
-    // [SerializeField] private float dashTime = 0.25f;
 
     [Header("Jump Params")]
     [SerializeField] private float jumpForce = 5.0f;
@@ -25,10 +22,13 @@ public class PlayerFPSController : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 2.0f;
     [SerializeField] private float upDownRange = 90.0f;
 
+    public event Action OnBeforeMove;
+
     private CharacterController characterController;
     private Camera mainCam;
     private PlayerInputHandler inputHandler;
     private PlayerDashScript playerDash;
+    private PlayerCrouch playerCrouch;
 
     private Vector3 currentMovement;
     private float verticalRotation;
@@ -36,6 +36,7 @@ public class PlayerFPSController : MonoBehaviour
     public float playerHeight;
 
     public CharacterController Player { get; set; }
+    public Camera PlayerCamera { get; set; }
 
     public static PlayerFPSController Instance { get; private set; }
 
@@ -57,7 +58,7 @@ public class PlayerFPSController : MonoBehaviour
         mainCam = Camera.main;
 
         Player = characterController;
-
+        PlayerCamera = mainCam;
 
         inputHandler = PlayerInputHandler.Instance;
         if (inputHandler == null)
@@ -70,6 +71,7 @@ public class PlayerFPSController : MonoBehaviour
     private void Start()
     {
         playerDash = GetComponent<PlayerDashScript>();
+        playerCrouch = GetComponent<PlayerCrouch>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -93,11 +95,11 @@ public class PlayerFPSController : MonoBehaviour
         verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
 
         mainCam.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
-
     }
 
     private void HandleMovement()
     {
+        OnBeforeMove?.Invoke();
         // if sprint value is greater than 1, we are sprinting
         float speed = walkSpeed * (inputHandler.SprintTriggered > 0.0 ? sprintMultiplier : 1f);
 
@@ -142,32 +144,5 @@ public class PlayerFPSController : MonoBehaviour
 
         if (!inputHandler.DashTriggered) canDash = true;
     }
-
-    // private void HandleDash()
-    // {
-    //     if (inputHandler.DashTriggered && canDash)
-    //     {
-    //         StartCoroutine(Dash());
-    //     }
-
-    //     if (!inputHandler.DashTriggered) canDash = true;
-
-    // }
-
-    // IEnumerator Dash()
-    // {
-    //     canDash = false;
-    //     float startTime = Time.time;
-    //     Debug.Log("Player Dashed");
-
-    //     while (Time.time < startTime + dashTime)
-    //     {
-    //         characterController.Move(dashSpeed * Time.deltaTime * currentMovement);
-
-    //         yield return null;
-    //     }
-    // }
-
-
 
 }

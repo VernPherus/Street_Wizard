@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerFPSController))]
 public class PlayerDashScript : MonoBehaviour
 {
     [Header("Dash Params")]
