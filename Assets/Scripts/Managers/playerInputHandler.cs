@@ -66,7 +66,6 @@ public class PlayerInputHandler : MonoBehaviour
         {
             Debug.Log("Duplicate PlayerInputHandler detected, destroying...");
             Destroy(gameObject);
-
         }
 
         // Find the action

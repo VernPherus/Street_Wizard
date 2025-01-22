@@ -14,7 +14,7 @@ public class PlayerCrouch : MonoBehaviour
     private CharacterController player;
     
     private void Awake() {
-        controller = GetComponent<PlayerFPSController>();
+        controller = PlayerFPSController.Instance;
         playerInput = PlayerInputHandler.Instance;
     }
 

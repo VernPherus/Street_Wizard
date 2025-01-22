@@ -14,8 +14,8 @@ public class PlayerFPSController : MonoBehaviour
     [SerializeField] private float walkSpeed = 2.0f;
     [SerializeField] private float sprintMultiplier = 6.0f;
     [SerializeField] private float crouchReduction = 0.5f;
-    [SerializeField] private float dashSpeed = 10.0f;
-    [SerializeField] private float dashTime = 0.25f;
+    // [SerializeField] private float dashSpeed = 10.0f;
+    // [SerializeField] private float dashTime = 0.25f;
 
     [Header("Jump Params")]
     [SerializeField] private float jumpForce = 5.0f;
@@ -35,16 +35,29 @@ public class PlayerFPSController : MonoBehaviour
     private bool canDash;
     public float playerHeight;
 
-    public CharacterController Player {get; set;}
-    public Vector3 CurrentMovement {get; set;}
+    public CharacterController Player { get; set; }
+
+    public static PlayerFPSController Instance { get; private set; }
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            Debug.Log("PlayerFPSController instance Assigned");
+        }
+        else
+        {
+            Debug.Log("Duplicate PlayerFPSController detected, destroying...");
+            Destroy(gameObject);
+        }
+
         characterController = GetComponent<CharacterController>();
         mainCam = Camera.main;
 
         Player = characterController;
-        CurrentMovement = currentMovement;
+
 
         inputHandler = PlayerInputHandler.Instance;
         if (inputHandler == null)
@@ -56,6 +69,8 @@ public class PlayerFPSController : MonoBehaviour
 
     private void Start()
     {
+        playerDash = GetComponent<PlayerDashScript>();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -121,27 +136,38 @@ public class PlayerFPSController : MonoBehaviour
     {
         if (inputHandler.DashTriggered && canDash)
         {
-            StartCoroutine(Dash());
+            playerDash.HandleDash(currentMovement);
+            canDash = false;
         }
 
         if (!inputHandler.DashTriggered) canDash = true;
-
     }
 
-    IEnumerator Dash()
-    {
-        canDash = false;
-        float startTime = Time.time;
-        Debug.Log("Player Dashed");
+    // private void HandleDash()
+    // {
+    //     if (inputHandler.DashTriggered && canDash)
+    //     {
+    //         StartCoroutine(Dash());
+    //     }
 
-        while (Time.time < startTime + dashTime)
-        {
-            characterController.Move(dashSpeed * Time.deltaTime * currentMovement);
+    //     if (!inputHandler.DashTriggered) canDash = true;
 
-            yield return null;
-        }
-    }
+    // }
+
+    // IEnumerator Dash()
+    // {
+    //     canDash = false;
+    //     float startTime = Time.time;
+    //     Debug.Log("Player Dashed");
+
+    //     while (Time.time < startTime + dashTime)
+    //     {
+    //         characterController.Move(dashSpeed * Time.deltaTime * currentMovement);
+
+    //         yield return null;
+    //     }
+    // }
 
 
-    
+
 }
