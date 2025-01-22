@@ -112,6 +112,9 @@ public class PlayerInputHandler : MonoBehaviour
         crouchAction.performed += context => CrouchValue = context.ReadValue<float>();
         crouchAction.canceled += context => CrouchValue = 0f;
 
+        conjureAction.performed += context => ConjureTriggered = true;
+        conjureAction.canceled += context => ConjureTriggered = false;
+
         sprintAction.performed += context => SprintTriggered = context.ReadValue<float>();
         sprintAction.canceled += context => SprintTriggered = 0f;
 

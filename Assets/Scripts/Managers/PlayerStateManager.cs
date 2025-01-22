@@ -14,15 +14,8 @@ enum PlayerStates
 
 public class Player_StateManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    [Header("Player State")]
+    [SerializeField] private PlayerStates playerState;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 }

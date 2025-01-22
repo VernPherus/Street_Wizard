@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
+
+
 
 public class PlayerFPSController : MonoBehaviour
 {
@@ -28,17 +31,16 @@ public class PlayerFPSController : MonoBehaviour
 
     private Vector3 currentMovement;
     private float verticalRotation;
+    private bool canDash;
+    public float playerHeight;
+
+    public CharacterController Player {get; set;}
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        Player = characterController;
         mainCam = Camera.main;
-    }
-
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
 
         inputHandler = PlayerInputHandler.Instance;
         if (inputHandler == null)
@@ -46,6 +48,15 @@ public class PlayerFPSController : MonoBehaviour
             Debug.Log("Player input handler is not assigned!");
             return;
         }
+    }
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        canDash = true;
+        playerHeight = characterController.height;
     }
 
     private void Update()
@@ -104,14 +115,18 @@ public class PlayerFPSController : MonoBehaviour
 
     private void HandleDash()
     {
-        if (inputHandler.DashTriggered)
+        if (inputHandler.DashTriggered && canDash)
         {
             StartCoroutine(Dash());
         }
+
+        if (!inputHandler.DashTriggered) canDash = true;
+
     }
 
     IEnumerator Dash()
     {
+        canDash = false;
         float startTime = Time.time;
         Debug.Log("Player Dashed");
 
@@ -121,11 +136,8 @@ public class PlayerFPSController : MonoBehaviour
 
             yield return null;
         }
-        
     }
 
-    private void Crouch()
-    {
 
-    }
+    
 }
