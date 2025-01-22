@@ -28,6 +28,7 @@ public class PlayerFPSController : MonoBehaviour
     private CharacterController characterController;
     private Camera mainCam;
     private PlayerInputHandler inputHandler;
+    private PlayerDashScript playerDash;
 
     private Vector3 currentMovement;
     private float verticalRotation;
@@ -35,12 +36,15 @@ public class PlayerFPSController : MonoBehaviour
     public float playerHeight;
 
     public CharacterController Player {get; set;}
+    public Vector3 CurrentMovement {get; set;}
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        Player = characterController;
         mainCam = Camera.main;
+
+        Player = characterController;
+        CurrentMovement = currentMovement;
 
         inputHandler = PlayerInputHandler.Instance;
         if (inputHandler == null)
