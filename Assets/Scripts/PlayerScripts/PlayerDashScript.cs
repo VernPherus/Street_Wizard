@@ -17,6 +17,8 @@ public class PlayerDashScript : MonoBehaviour
     [SerializeField] private float dashCooldown = 10.0f;
     [SerializeField] private int dashThreshold = 3;
 
+    public int DashThreshold { get; private set; }
+
     private PlayerFPSController controller;
     private PlayerInputHandler inputHandler;
 
@@ -28,9 +30,10 @@ public class PlayerDashScript : MonoBehaviour
 
     public void HandleDash(Vector3 direction)
     {
-        if (inputHandler.DashTriggered)
+        if (inputHandler.DashTriggered && dashThreshold != 0)
         {
             StartCoroutine(Dash(direction));
+            //dashThreshold -= 1;
         }
     }
 
@@ -44,5 +47,13 @@ public class PlayerDashScript : MonoBehaviour
             controller.Player.Move(dashSpeed * Time.deltaTime * direction);
             yield return null;
         }
+    }
+
+    IEnumerator dashCoolDown()
+    {
+        float startTime= Time.time;
+
+
+        yield return null;
     }
 }

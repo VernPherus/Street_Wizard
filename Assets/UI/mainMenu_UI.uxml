@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/main_menu.uss?fileID=7433441132597879392&amp;guid=7630307d8d974ef44b1abb085ae52b0c&amp;type=3#main_menu" />
+    <ui:VisualElement name="Body" class="body" style="flex-grow: 1;">
+        <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement name="MenuContainer" style="flex-grow: 1; align-self: flex-start; justify-content: flex-start; align-items: center; flex-direction: column; padding-top: 187px; padding-right: 0; padding-bottom: 138px; padding-left: 0;">
+                <ui:VisualElement name="MainMenu" style="flex-grow: 1; justify-content: center; align-items: center; align-self: auto; padding-top: 71px; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color: rgba(0, 0, 0, 0.55); border-top-left-radius: 14px; border-top-right-radius: 14px; border-bottom-right-radius: 14px; border-bottom-left-radius: 14px; height: 250px;">
+                    <ui:Label tabindex="-1" text="STREET WIZARD" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="-unity-text-align: middle-center; -unity-font-style: normal; white-space: nowrap; color: rgb(255, 255, 255); padding-bottom: 20px; font-size: 40px; -unity-font: url(&quot;project://database/Assets/UI/fonts/Coalabeer-5Vlv.ttf?fileID=12800000&amp;guid=5503f1cc746bd2545a60733d23154c56&amp;type=3#Coalabeer-5Vlv&quot;); -unity-font-definition: initial;" />
+                    <ui:VisualElement name="ButtonContainer" style="flex-grow: 1; align-self: auto; align-items: stretch; justify-content: flex-start; flex-direction: column; width: 250px; left: 0; top: 0; right: 0; bottom: 206px; height: 250px;">
+                        <ui:Button text="PLAY" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" enable-rich-text="false" style="white-space: nowrap; background-color: rgb(5, 5, 5); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; -unity-font-style: bold; color: rgb(255, 255, 255); -unity-text-outline-color: rgba(0, 0, 0, 0);" />
+                        <ui:Button text="SETTINGS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" style="white-space: nowrap; -unity-text-align: middle-center; background-color: rgb(12, 11, 11); color: rgb(243, 243, 243); -unity-font-style: bold; border-left-color: rgb(29, 26, 26); border-right-color: rgb(29, 26, 26); border-top-color: rgb(29, 26, 26); border-bottom-color: rgb(29, 26, 26); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px;" />
+                        <ui:Button text="QUIT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" style="white-space: nowrap; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; border-left-color: rgb(26, 26, 26); border-right-color: rgb(26, 26, 26); border-top-color: rgb(26, 26, 26); border-bottom-color: rgb(26, 26, 26); background-color: rgb(10, 9, 9); color: rgb(255, 255, 255); -unity-font-style: bold;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Container" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
