@@ -70,9 +70,6 @@ public class PlayerCrouch : MonoBehaviour
             controller.Player.height = currentHeight;
         }
 
-
-
-
     }
 
 }
