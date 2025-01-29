@@ -1,3 +1,5 @@
+// Summary: This script handles what the player does once the player does an input
+
 using System;
 using UnityEngine;
 
@@ -129,9 +131,26 @@ public class PlayerFPSController : MonoBehaviour
 
     private void HandleDash()
     {
+
         if (inputHandler.DashTriggered && canDash)
         {
-            playerDash.HandleDash(currentMovement);
+            Debug.Log($"Magnitude: {currentMovement.magnitude}");
+
+            Vector3 dashDirection;
+
+            if (inputHandler.MoveInput.sqrMagnitude > 0.01f)
+            {
+                dashDirection = new Vector3(inputHandler.MoveInput.x, 0, inputHandler.MoveInput.y);
+                dashDirection = transform.TransformDirection(dashDirection).normalized;
+            }
+            else
+            {
+                dashDirection = transform.forward;
+            }
+
+            Debug.Log($"Current Direction: {dashDirection.x}, {dashDirection.y}, {dashDirection.z} | Magnitude: {dashDirection.magnitude}");
+
+            playerDash.HandleDash(dashDirection);
             canDash = false;
         }
 

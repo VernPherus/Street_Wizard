@@ -1,23 +1,20 @@
-// TODO: Add dash thresholding to limit player dashes
-/** Since dashing pushes the player to the current direction it's facing, 
-* funny things happen such as dashing while jumping results in a super jump.
-* Dunno if we should keep it or nah, but it could be a fun mechanic.
-*/
+// TODO: Buff dash speed when not moving
 
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerFPSController))]
 public class PlayerDashScript : MonoBehaviour
 {
     [Header("Dash Params")]
-    [SerializeField] private float dashSpeed = 5;
+    [SerializeField] private float dashSpeed = 8;
     [SerializeField] private float dashDuration = 0.25f;
-    [SerializeField] private float dashCooldown = 10.0f;
-    [SerializeField] private int dashThreshold = 3;
+    [SerializeField] private float dashCooldown = 10f;
+    [SerializeField] private int maxDashes = 3;
 
-    public int DashThreshold { get; private set; }
+    [SerializeField] private int currentDashes;
+    private bool isDashing = false;
+    private bool isRegenerating = false;
 
     private PlayerFPSController controller;
     private PlayerInputHandler inputHandler;
@@ -26,34 +23,60 @@ public class PlayerDashScript : MonoBehaviour
     {
         controller = PlayerFPSController.Instance;
         inputHandler = PlayerInputHandler.Instance;
+        currentDashes = maxDashes;
+
     }
 
     public void HandleDash(Vector3 direction)
     {
-        if (inputHandler.DashTriggered && dashThreshold != 0)
+        if (currentDashes > 0)
         {
             StartCoroutine(Dash(direction));
-            //dashThreshold -= 1;
         }
     }
 
     IEnumerator Dash(Vector3 direction)
     {
-        float startTime = Time.time;
+        if (isDashing || currentDashes <= 0) yield break;
+
+        isDashing = true;
+        currentDashes--;
+
         Debug.Log("Player Dashing");
+
+        if (!isRegenerating)
+        {
+            StartCoroutine(dashRegenerate());
+        }
+
+        float startTime = Time.time;
+
+        Vector3 dashVelocity = direction.normalized * dashSpeed;
+
+        Debug.Log($"{dashVelocity}");
 
         while (Time.time < startTime + dashDuration)
         {
-            controller.Player.Move(dashSpeed * Time.deltaTime * direction);
+            controller.Player.Move(dashVelocity * Time.deltaTime);
             yield return null;
         }
+
+        isDashing = false;
     }
 
-    IEnumerator dashCoolDown()
+    IEnumerator dashRegenerate()
     {
-        float startTime= Time.time;
+        if (isRegenerating) yield break;
 
+        isRegenerating = true;
 
-        yield return null;
+        while (currentDashes < maxDashes)
+        {
+            yield return new WaitForSeconds(dashCooldown);
+            currentDashes++;
+            Debug.Log($"Dash regenerated. Current Dashes: {currentDashes}");
+        }
+
+        isRegenerating = false;
     }
 }

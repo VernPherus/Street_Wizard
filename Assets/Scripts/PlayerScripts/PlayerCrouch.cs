@@ -1,9 +1,6 @@
 
 // TODO: Add speed reduction when crouched
 
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerFPSController))]
