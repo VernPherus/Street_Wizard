@@ -45,7 +45,7 @@ public class PlayerInputHandler : MonoBehaviour
     public int SwitchWeaponsInput { get; private set; }
     public Vector2 RuneInputsInput { get; private set; }
     public bool InteractTriggered { get; private set; }
-    public float FireValue { get; private set; }
+    public bool FireTriggered { get; private set; }
     public float CrouchValue { get; private set; }
     public bool ConjureTriggered { get; private set; }
     public float SprintTriggered { get; private set; }
@@ -105,8 +105,8 @@ public class PlayerInputHandler : MonoBehaviour
         interactAction.performed += context => InteractTriggered = true;
         interactAction.canceled += context => InteractTriggered = false;
 
-        fireAction.performed += context => FireValue = context.ReadValue<float>();
-        fireAction.canceled += context => FireValue = 0f;
+        fireAction.performed += context => FireTriggered = true;
+        fireAction.canceled += context => FireTriggered = false;
 
         crouchAction.performed += context => CrouchValue = context.ReadValue<float>();
         crouchAction.canceled += context => CrouchValue = 0f;
