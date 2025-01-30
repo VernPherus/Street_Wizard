@@ -1,8 +1,6 @@
 
 // Centralized Input controller to make referencing inputs easier
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
