@@ -41,7 +41,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 MoveInput { get; private set; }
     public Vector2 LookInput { get; private set; }
     public int SwitchWeaponsInput { get; private set; }
-    public Vector2 RuneInputsInput { get; private set; }
+    public Vector2 RuneInput { get; private set; }
     public bool InteractTriggered { get; private set; }
     public bool FireTriggered { get; private set; }
     public float CrouchValue { get; private set; }
@@ -97,8 +97,8 @@ public class PlayerInputHandler : MonoBehaviour
         switchWeaponsAction.performed += context => SwitchWeaponsInput = context.ReadValue<int>();
         switchWeaponsAction.canceled += context => SwitchWeaponsInput = 0;
 
-        runeInputsAction.performed += context => RuneInputsInput = context.ReadValue<Vector2>();
-        runeInputsAction.canceled += context => RuneInputsInput = Vector2.zero;
+        runeInputsAction.performed += context => RuneInput = context.ReadValue<Vector2>();
+        runeInputsAction.canceled += context => RuneInput = Vector2.zero;
 
         interactAction.performed += context => InteractTriggered = true;
         interactAction.canceled += context => InteractTriggered = false;
