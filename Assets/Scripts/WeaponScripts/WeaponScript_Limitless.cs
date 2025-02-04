@@ -17,7 +17,7 @@ public class WeaponScriptLimitless : MonoBehaviour
 
     private Camera mainCam;
 
-    private void Awake()
+    private void Start()
     {
         playerController = PlayerFPSController.Instance;
         playerInput = PlayerInputHandler.Instance;

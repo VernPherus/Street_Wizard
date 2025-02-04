@@ -1,0 +1,56 @@
+.body {
+}
+
+.menu_button {
+    font-size: 16px;
+    -unity-text-align: upper-center;
+    -unity-font: url("project://database/Assets/UI/fonts/Coalabeer-5Vlv.ttf?fileID=12800000&guid=5503f1cc746bd2545a60733d23154c56&type=3#Coalabeer-5Vlv");
+    -unity-font-style: normal;
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(236, 236, 236, 0);
+    border-right-color: rgba(236, 236, 236, 0);
+    border-top-color: rgba(236, 236, 236, 0);
+    border-bottom-color: rgba(236, 236, 236, 0);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.menu_button_container {
+    height: auto;
+    max-height: 600px;
+    min-height: 400px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+    background-image: none;
+}
+
+.menu_container {
+    padding-top: 40px;
+    min-height: auto;
+    background-image: none;
+    min-width: 400px;
+    max-height: none;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    position: relative;
+    align-items: flex-start;
+    align-self: flex-start;
+    justify-content: flex-start;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    flex-grow: 1;
+    width: 600px;
+    max-width: 600px;
+}
