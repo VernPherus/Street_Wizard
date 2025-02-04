@@ -1,0 +1,31 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/mainMenui_stylesheet.uss?fileID=7433441132597879392&amp;guid=7630307d8d974ef44b1abb085ae52b0c&amp;type=3#mainMenui_stylesheet" />
+    <ui:VisualElement name="Body" class="body hide">
+        <ui:VisualElement name="Gallery" class="lvl_gallery" style="flex-grow: 1;">
+            <ui:VisualElement name="TitleContainer" style="flex-grow: 1; justify-content: center; align-items: center;">
+                <ui:Label tabindex="-1" text="LEVEL SELECT" parse-escape-sequences="true" display-tooltip-when-elided="true" class="title_text" style="-unity-font: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=5cd841002771c38448173539f9327fec&amp;type=3#NotInter-Regular&quot;);" />
+                <ui:Label tabindex="-1" text="-- STREET WIZARD --" parse-escape-sequences="true" display-tooltip-when-elided="true" class="subtitle" style="color: rgb(180, 180, 180);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="GalleryContainer" style="flex-grow: 1; flex-direction: row; flex-wrap: nowrap; max-height: none; height: 400px; min-height: 400px; padding-top: 40px; padding-right: 40px; padding-bottom: 40px; padding-left: 40px;">
+                <ui:VisualElement name="GalleryItem" class="gallery_button" style="flex-grow: 1;">
+                    <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                    <ui:Button text="Level 1" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                </ui:VisualElement>
+                <ui:VisualElement name="GalleryItem" class="gallery_button" style="flex-grow: 1;">
+                    <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" />
+                    <ui:Button text="Level 2" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" />
+                </ui:VisualElement>
+                <ui:VisualElement name="GalleryItem" class="gallery_button" style="flex-grow: 1;">
+                    <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                    <ui:Button text="Level 3" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Footer" class="footer" style="flex-grow: 1; padding-top: 20px; padding-bottom: 20px; padding-left: 60px; padding-right: 60px; align-items: center;">
+            <ui:VisualElement name="Container" style="flex-grow: 1; max-width: 600px; min-width: 300px;">
+                <ui:Button text="TEST LEVEL" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu_button" />
+                <ui:Button text="&lt;&lt;BACK&gt;&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menu_button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
