@@ -1,0 +1,115 @@
+.body {
+}
+
+.menu_button {
+    font-size: 20px;
+    -unity-text-align: upper-center;
+    -unity-font: url("project://database/Assets/UI/fonts/Coalabeer-5Vlv.ttf?fileID=12800000&guid=5503f1cc746bd2545a60733d23154c56&type=3#Coalabeer-5Vlv");
+    -unity-font-style: bold;
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(255, 255, 255, 0.31);
+    border-right-color: rgba(255, 255, 255, 0.31);
+    border-top-color: rgba(255, 255, 255, 0.31);
+    border-bottom-color: rgba(255, 255, 255, 0.31);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(250, 249, 249);
+}
+
+.menu_button_container {
+    height: auto;
+    max-height: 600px;
+    min-height: 400px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+    background-image: none;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.menu_container {
+    padding-top: 40px;
+    min-height: auto;
+    background-image: none;
+    min-width: 400px;
+    max-height: none;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    position: relative;
+    align-items: flex-start;
+    align-self: flex-start;
+    justify-content: flex-start;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    flex-grow: 1;
+    width: 600px;
+    max-width: 600px;
+}
+
+.menu_button:hover {
+    background-color: rgba(115, 112, 112, 0.46);
+}
+
+.title_text {
+    align-items: center;
+    align-self: center;
+    font-size: 60px;
+    -unity-font-style: bold;
+    color: rgb(200, 200, 200);
+}
+
+.menu_button:active {
+    scale: 1.1 1.1;
+}
+
+.lvl_gallery {
+}
+
+.gallery_button {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(48, 48, 48, 0.92);
+    border-right-color: rgba(48, 48, 48, 0.92);
+    border-top-color: rgba(48, 48, 48, 0.92);
+    border-bottom-color: rgba(48, 48, 48, 0.92);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.footer {
+    max-height: 200px;
+}
+
+.title_container {
+}
+
+.subtitle {
+    -unity-font-style: bold;
+    font-size: 25px;
+}
+
+.hide {
+    display: flex;
+    visibility: hidden;
+}

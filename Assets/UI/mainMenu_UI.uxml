@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/mainMenui_stylesheet.uss?fileID=7433441132597879392&amp;guid=7630307d8d974ef44b1abb085ae52b0c&amp;type=3#mainMenui_stylesheet" />
+    <ui:VisualElement name="Body" class="body" style="flex-grow: 1;">
+        <ui:VisualElement name="MenuContainer" class="menu_container" style="align-self: flex-start; justify-content: center;">
+            <ui:VisualElement name="MainMenu" class="menu_button_container" style="background-color: rgba(0, 0, 0, 0.62); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; align-self: center;">
+                <ui:Label tabindex="-1" text="STREET WIZARD" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="title_text" style="-unity-text-align: lower-center; -unity-font-style: normal; white-space: nowrap; color: rgb(255, 255, 255); padding-bottom: 0; font-size: 40px; -unity-font: url(&quot;project://database/Assets/UI/fonts/Coalabeer-5Vlv.ttf?fileID=12800000&amp;guid=5503f1cc746bd2545a60733d23154c56&amp;type=3#Coalabeer-5Vlv&quot;); -unity-font-definition: initial; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-left: 0;" />
+                <ui:VisualElement name="ButtonColumn" style="flex-grow: 1; align-self: auto; align-items: stretch; justify-content: center; flex-direction: column; width: 250px; left: 0; top: 0; right: 0; bottom: 206px; height: 250px;">
+                    <ui:Button text="PLAY" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayButton" enable-rich-text="true" class="menu_button" />
+                    <ui:Button text="SETTINGS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingsButton" class="menu_button" />
+                    <ui:Button text="QUIT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="menu_button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

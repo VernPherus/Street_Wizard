@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6975118deebd48c4eafbc3aa99577f83, type: 3}
+  m_Name: GatlingWant_ShootingConfig
+  m_EditorClassIdentifier: 
+  IsHitscan: 1
+  firingType: 0
+  projectilePrefab: {fileID: 0}
+  BulletSpawnForce: 1000
+  Hitmask:
+    serializedVersion: 2
+    m_Bits: 193
+  FireRate: 0.1
+  AimType: 0
+  RecoilRecoverySpeed: 1
+  MaxSpreadTime: 1
+  SpreadType: 2
+  Spread: {x: 0.1, y: 0.1, z: 0.1}
+  SpreadMultiplier: 0.04
+  SpreadTexture: {fileID: 2800000, guid: 0283562f7105f004f91469c4cda6861f, type: 3}

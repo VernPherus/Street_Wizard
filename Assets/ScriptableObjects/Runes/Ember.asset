@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41976354812c1af41a0d982601f572ae, type: 3}
+  m_Name: Ember
+  m_EditorClassIdentifier: 
+  runeName: Ember Rune
+  runeSequenceId: DUDU
+  runeType: 0
+  runePrefab: {fileID: 4402022558251056612, guid: 387042fca4b94a346a90080966de1d08, type: 3}
+  SpawnPoint: {x: -0.148, y: -0.202, z: 0.675}
+  SpawnRotation: {x: -90, y: 0, z: 0}
+  manaConfig: {fileID: 11400000, guid: f2be7aaeaecb16e459082356bf31726c, type: 2}
+  summonConfig: {fileID: 11400000, guid: d30f942896fbd454882f64bcf9974821, type: 2}

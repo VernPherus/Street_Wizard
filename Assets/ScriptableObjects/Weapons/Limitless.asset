@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d227c3b86fdb2b6478b7d254aed534b0, type: 3}
+  m_Name: Limitless
+  m_EditorClassIdentifier: 
+  weaponName: Limitless
+  ImpactType: {fileID: 11400000, guid: 136c9b9319c362443b04675ce59bd105, type: 2}
+  weaponType: 0
+  damageType: 5
+  ModelPrefab: {fileID: 5741239022666677678, guid: f59afff286f706e4bbbcfd4f6faf400a, type: 3}
+  SpawnPoint: {x: 0.091, y: -0.297, z: 0.557}
+  SpawnRotation: {x: 0, y: 0, z: 0}
+  DamageConfig: {fileID: 11400000, guid: 157926a76aa0ce34a8de7d669d870c2b, type: 2}
+  AmmoConfig: {fileID: 11400000, guid: 98aa6064966de7a4d872ae28f567ad8f, type: 2}
+  ShootConfig: {fileID: 11400000, guid: 0ae42fdd45f3a6646b15b76fb37ecc93, type: 2}
+  WeaponTrail: {fileID: 11400000, guid: 41e4502f0feb5df4aa87b9ae60597da9, type: 2}
