@@ -1,26 +1,10 @@
-/*
-### Weapon Class
-
-All weapon properties are here
-
-*/
-
-// TODO: Integrate projectile asset to weapon object system
 using System.Collections;
+using Managers;
 using UnityEngine;
 using UnityEngine.Pool;
+using WeaponsScripts.Damage;
 using WeaponsScripts.ImpactEffects;
 
-public enum WeaponType
-{
-    Limitless,
-    Banisher,
-    GatlingWand,
-    BigBore,
-    Smiter,
-    MAW,
-    //Knife
-}
 
 namespace WeaponsScripts
 {

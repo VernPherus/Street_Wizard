@@ -1,45 +1,36 @@
+using WeaponsScripts.Modifiers;
+using System.Collections.Generic;
 
-using System.Collections;
-using UnityEngine;
-
-public enum RuneType
+namespace SpellScripts
 {
-    Ember,
-    Frost,
-    Crystal,
-    Gas
-}
-
-[CreateAssetMenu(fileName = "NewRune", menuName = "Runes/Rune")]
-public class Rune : ScriptableObject
-{
-    public string runeName;
-    public string runeSequenceId;
-
-    public RuneType runeType;
-    public GameObject runePrefab;
-
-    public Vector3 SpawnPoint;
-    public Vector3 SpawnRotation;
-
-    private GameObject RuneModel;
-
-    private ParticleSystem RuneParticleSystem;
-
-    public ManaConfig manaConfig;
-    public SummonConfig summonConfig;
-
-    private MonoBehaviour activeMonoBehavior;
-
-    public void Spawn(Transform Parent, MonoBehaviour ActiveMonoBehavior)
+    public class Rune
     {
-        activeMonoBehavior = ActiveMonoBehavior;
+        public string Name { get; set; }
+        public string Descrition { get; set; }
+        public List<IModifier> Modifiers { get; set; }
+        public int ManaCost { get; set; }
+        public int RuneDuration { get; set; }
 
-        RuneModel = Instantiate(runePrefab);
-        RuneModel.transform.SetParent(Parent, false);
-        RuneModel.transform.SetLocalPositionAndRotation(SpawnPoint, Quaternion.Euler(SpawnRotation));
+        public Rune()
+        {
+            Modifiers = new();
+        }
 
-        RuneParticleSystem = RuneModel.GetComponentInChildren<ParticleSystem>();
+        public Rune(
+            string Name,
+            string Descrition,
+            List<IModifier> Modifiers,
+            int ManaCost,
+            int RuneDuration
+        )
+        {
+            this.Name = Name;
+            this.Descrition = Descrition;
+            this.Modifiers = Modifiers;
+            this.ManaCost = ManaCost;
+            this.RuneDuration = RuneDuration;
+        }
+
+        public void AddModifier(IModifier Modifier) { Modifiers.Add(Modifier); }
     }
-
 }

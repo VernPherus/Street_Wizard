@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace WeaponsScripts
+namespace WeaponsScripts.Modifiers
 {
     public class InvalidPathSpecifiedException : Exception
     {
