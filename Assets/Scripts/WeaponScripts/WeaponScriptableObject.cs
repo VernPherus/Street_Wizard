@@ -425,12 +425,16 @@ namespace WeaponsScripts
         }
 
         // #############################################################################################################
-        // * ## ## 
+        // * ## Projectile Logic ## 
         // #############################################################################################################
 
         private Projectile CreateProjectile()
         {
-            return Instantiate(ShootConfig.projectilePrefab);
+            Projectile projectile = Instantiate(ShootConfig.projectilePrefab);
+            Rigidbody rigidbody = projectile.GetComponent<Rigidbody>();
+            rigidbody.mass = ShootConfig.BulletWeight;
+
+            return Instantiate(projectile);
         }
 
         public object Clone()

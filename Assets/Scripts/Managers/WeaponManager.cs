@@ -1,4 +1,4 @@
-
+// TODO: FIX NULL REFERENCE ERROR AFTER RESETTING WEAPON.
 using System.Collections.Generic;
 using UnityEngine;
 using WeaponsScripts;
@@ -15,6 +15,8 @@ namespace Managers
         [SerializeField] private Transform weaponParent;
         [SerializeField] List<WeaponScriptableObject> weapons;
 
+        private List<IModifier> activeModifiers = new();
+
 
         [Space]
         [Header("Runtime Filled")]
@@ -23,13 +25,13 @@ namespace Managers
 
         //public Weapon ActiveWeapon { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
             WeaponScriptableObject weapon = weapons.Find(weapon => weapon.weaponType == Weapon);
 
             if (weapon == null)
             {
-                Debug.LogError($"No ScriptableObject found for WeaponType: {weapon}");
+                Debug.LogError($"No ScriptableOb;ject found for WeaponType: {weapon}");
                 return;
             }
 
@@ -60,6 +62,10 @@ namespace Managers
             SetupWeapon(Weapon);
         }
 
+        // #############################################################################################################
+        //* ## Modifier Logic ##        
+        // #############################################################################################################
+
         public void ApplyModifiers(IModifier[] Modifiers)
         {
             DespawActiveWeapon();
@@ -68,8 +74,28 @@ namespace Managers
             foreach (IModifier modifier in Modifiers)
             {
                 modifier.Apply(ActiveWeapon);
+                activeModifiers.Add(modifier);
             }
         }
 
+        public void RemoveModifier(IModifier modifier)
+        {
+            if (activeModifiers.Contains(modifier))
+            {
+                activeModifiers.Remove(modifier);
+                ResetWeapon();
+                ApplyModifiers(activeModifiers.ToArray());
+            }
+        }
+
+        public void ResetWeapon()
+        {
+            ActiveWeapon = ActiveBaseWeapon.Clone() as WeaponScriptableObject;
+        }
+
+        // internal void ApplyModifiers(List<IModifier> modifiers)
+        // {
+        //     throw new NotImplementedException();
+        // }
     }
 }

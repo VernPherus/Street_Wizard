@@ -3,11 +3,12 @@ using UnityEngine;
 [RequireComponent(typeof(IDamageable))]
 public class SpawnParticlesOnDeath : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private ParticleSystem DeathSystem;
     public IDamageable Damageable;
 
-    private void Awake() {
+    private void Awake()
+    {
         Damageable = GetComponent<IDamageable>();
     }
 

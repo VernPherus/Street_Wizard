@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Managers;
 
 public enum Direction
 {
@@ -17,10 +18,10 @@ public class playerSummonInput : MonoBehaviour
 
     [SerializeField] SummonManager summonManager;
 
-    private List<String> Sequence = new List<string>();
+    private List<string> Sequence = new List<string>();
     private int maxSequenceLength = 4;
 
-    private List<String> directionChar = new() { "U", "D", "L", "R" };
+    private List<string> directionChar = new() { "U", "D", "L", "R" };
 
     private void Awake()
     {
@@ -55,12 +56,12 @@ public class playerSummonInput : MonoBehaviour
 
     }
 
-    private String ConvertInputToID(List<String> sequence)
+    private string ConvertInputToID(List<string> sequence)
     {
         return string.Join("", sequence);
     }
 
-    public void SummonSpell(String id)
+    public void SummonSpell(string id)
     {
         summonManager.SpawnFromSequence(id);
     }

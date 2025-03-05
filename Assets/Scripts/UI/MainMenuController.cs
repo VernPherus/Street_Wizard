@@ -15,7 +15,6 @@ public class MainMenuController : MonoBehaviour
     private void Awake()
     {
         ui = GetComponent<UIDocument>().rootVisualElement;
-
     }
 
     private void OnEnable()
@@ -28,7 +27,6 @@ public class MainMenuController : MonoBehaviour
 
         quitButton = ui.Q<Button>("QuitButton");
         quitButton.clicked += OnQuitClicked;
-
     }
 
 

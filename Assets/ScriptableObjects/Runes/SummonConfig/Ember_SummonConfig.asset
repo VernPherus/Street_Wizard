@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c81261258e45a418416185270a97c6, type: 3}
   m_Name: Ember_SummonConfig
   m_EditorClassIdentifier: 
+  ManaConsumption: 0
+  SummonCooldown: 0
+  ImbueDuration: 10
+  DamageMultiplier: 100
+  ImpactTypeOverride: {fileID: 11400000, guid: 136c9b9319c362443b04675ce59bd105, type: 2}

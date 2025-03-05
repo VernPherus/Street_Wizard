@@ -1,3 +1,4 @@
+using SpellScripts;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Imbue Configuration", menuName = "Weapons/Imbue Configuration")]
@@ -6,6 +7,8 @@ public class ImbueConfig : ScriptableObject
     [SerializeField] public GameObject[] sfxPrefabs;
     [SerializeField] public ParticleSystem WeaponEffect;
     [SerializeField] public bool isImbued;
+
+    [SerializeField] public float DamageMultiplier;
 
     public RuneType currentRune;
 

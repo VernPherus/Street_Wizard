@@ -8,5 +8,4 @@ public class HUDController : MonoBehaviour
     [SerializeField] private SummonManager SummonManager;
     [SerializeField] private PlayerInputHandler PlayerInputHandler;
 
-
 }

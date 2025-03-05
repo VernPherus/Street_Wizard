@@ -1,12 +1,7 @@
+using System.Collections.Generic;
+using SpellScripts;
 using UnityEngine;
-
-public enum RuneType
-{
-    Ember,
-    Frost,
-    Crystal,
-    Gas
-}
+using WeaponsScripts.Modifiers;
 
 [CreateAssetMenu(fileName = "NewRune", menuName = "Runes/Rune")]
 public class RuneScriptableObject : ScriptableObject
@@ -39,5 +34,9 @@ public class RuneScriptableObject : ScriptableObject
 
         RuneParticleSystem = RuneModel.GetComponentInChildren<ParticleSystem>();
     }
+
+    
+
+
 
 }

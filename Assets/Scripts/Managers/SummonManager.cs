@@ -1,13 +1,10 @@
-// INFO:
-/**
-* This script handles:
-* Summon Mechanics
-*/
-using System;
+
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 using WeaponsScripts;
+using SpellScripts;
+using WeaponsScripts.Modifiers;
+using System.Collections;
 
 
 namespace Managers
@@ -19,7 +16,8 @@ namespace Managers
         [SerializeField] RuneType Rune;
         [SerializeField] private Transform runeParent;
         [SerializeField] private List<RuneScriptableObject> runeList;
-        [SerializeField] Dictionary<String, RuneType> RuneDictionary;
+        [SerializeField] private List<MonoBehaviour> runeModifierList;
+        [SerializeField] Dictionary<string, RuneType> RuneDictionary;
         private WeaponManager weaponManager;
         [SerializeField] private Transform target;
 
@@ -27,9 +25,12 @@ namespace Managers
         [Header("Runtime Filled")]
         public RuneScriptableObject activeRune;
 
+        public bool HasSummoned { get; set; }
+
+
         private GameObject ActiveRuneObject;
 
-        float speed = 3;
+
 
         private void Awake()
         {
@@ -42,15 +43,26 @@ namespace Managers
                 RuneDictionary[rune.runeSequenceId] = rune.runeType;
             }
 
-            foreach (KeyValuePair<String, RuneType> rune in RuneDictionary)
+            foreach (KeyValuePair<string, RuneType> rune in RuneDictionary)
             {
                 Debug.Log($"Key:{rune.Key}, Value:{rune.Value}");
             }
 
+            DamageModifier damageModifierA = new() { Amount = 100f, AttributeName = "DamageConfig/DamageCurve" },
+
+            tempList = new()
+            {
+
+
+            };
+
         }
 
-        //Spawn weapon from sequence
-        public void SpawnFromSequence(String id)
+        // #############################################################################################################
+        //* ## Spawn Logic ##        
+        // #############################################################################################################
+
+        public void SpawnFromSequence(string id)
         {
             Debug.Log($"Sequence: {id}");
 
@@ -73,7 +85,10 @@ namespace Managers
             Destroy(ActiveRuneObject);
         }
 
-        // Imbue weapon
+        // #############################################################################################################
+        //* ## Imbuing Logic ##        
+        // #############################################################################################################
+
         public void Imbue()
         {
             // Take active weapon
@@ -84,8 +99,30 @@ namespace Managers
 
             // change weapon properties
 
+            weaponManager.ApplyModifiers(activeRune.summonConfig.ReturnModifiers());
+
+            //Start timer before removing effects
+
+            StartCoroutine(RemoveImbueAfterTime(activeRune.summonConfig.ImbueDuration));
+        }
+
+        private IEnumerator RemoveImbueAfterTime(float duration)
+        {
+            yield return new WaitForSeconds(duration);
+
+            Debug.Log($"Removing rune effects of {activeRune.name}.");
+
+            // Remove the rune's modifiers from the weapon
+            foreach (var modifier in activeRune.summonConfig.modifiers)
+            {
+                weaponManager.RemoveModifier(modifier);
+            }
 
         }
+
+        // #############################################################################################################
+        //* ## Effects Logic ##        
+        // #############################################################################################################
 
         // IEnumerator MoveSpell(Vector3 targetPosition)
         // {
@@ -102,6 +139,8 @@ namespace Managers
 
         //     ActiveRuneObject.transform.position = targetPosition;
         // }
+
+
 
 
     }

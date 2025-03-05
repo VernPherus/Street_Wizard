@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Reflection;
 
 
@@ -6,6 +7,14 @@ namespace WeaponsScripts.Modifiers
 {
     public abstract class AbstractValueModifier<T> : IModifier
     {
+
+        public AbstractValueModifier() { }
+        public AbstractValueModifier(T Amount, string AttributeName)
+        {
+            this.AttributeName = AttributeName;
+            this.Amount = Amount;
+        }
+
         public string AttributeName;
         public T Amount;
 

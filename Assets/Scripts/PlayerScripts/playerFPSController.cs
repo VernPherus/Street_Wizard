@@ -4,6 +4,7 @@
 
 using System;
 using UnityEngine;
+using Managers;
 
 public class PlayerFPSController : MonoBehaviour
 {
