@@ -1,9 +1,12 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/hud_stylesheet.uss?fileID=7433441132597879392&amp;guid=38a2ecd34b6e1b64889a54a14484cfa6&amp;type=3#hud_stylesheet" />
-    <ui:VisualElement name="HUDContainer" style="flex-grow: 1; flex-direction: row;">
-        <ui:VisualElement name="LeftPanel" style="flex-grow: 1;">
-            <ui:VisualElement name="Container" style="flex-grow: 1;" />
+    <ui:VisualElement name="HUDContainer" style="flex-grow: 1; flex-direction: column;">
+        <ui:VisualElement name="TopPanel" style="flex-grow: 1;" />
+        <ui:VisualElement name="BottomPanel" style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement name="LeftPanel" style="flex-grow: 1;">
+                <ui:VisualElement name="Container" style="flex-grow: 1;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="RightPanel" style="flex-grow: 1;" />
         </ui:VisualElement>
-        <ui:VisualElement name="RightPanel" style="flex-grow: 1;" />
     </ui:VisualElement>
 </ui:UXML>

@@ -91,6 +91,8 @@ namespace Managers
         public void ResetWeapon()
         {
             ActiveWeapon = ActiveBaseWeapon.Clone() as WeaponScriptableObject;
+            SetupWeapon(ActiveWeapon);
+            Debug.Log("Weapon is reset.");
         }
 
         // internal void ApplyModifiers(List<IModifier> modifiers)

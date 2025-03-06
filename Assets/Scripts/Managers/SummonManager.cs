@@ -30,6 +30,8 @@ namespace Managers
 
         private GameObject ActiveRuneObject;
 
+        private RuneScriptableObject rune;
+
 
 
         private void Awake()
@@ -66,13 +68,16 @@ namespace Managers
         {
             Debug.Log($"Sequence: {id}");
 
-            RuneScriptableObject rune = runeList.Find(rune => RuneDictionary[id] == Rune);
-
-            if (rune == null)
+            try
+            {
+                rune = runeList.Find(rune => RuneDictionary[id] == Rune);
+            }
+            catch (System.Exception)
             {
                 Debug.LogError($"No ScriptableObject found for RuneType: {rune}");
-                return;
+                throw;
             }
+
 
             activeRune = rune;
             rune.Spawn(runeParent, this);
