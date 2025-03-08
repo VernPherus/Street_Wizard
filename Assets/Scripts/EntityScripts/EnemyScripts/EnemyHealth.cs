@@ -1,4 +1,5 @@
 using UnityEngine;
+using WeaponsScripts.Damage;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
@@ -7,6 +8,13 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     [SerializeField]
     private float _Health;
 
+    [Header("Damage params")]
+    [SerializeField]
+    private DamageType weakness;
+    [SerializeField]
+    private DamageType immunity;
+    [SerializeField]
+    private DamageCalculator damageCalculator;
 
     public float CurrentHealth { get => _Health; private set => _Health = value; }
 
@@ -20,11 +28,12 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         CurrentHealth = MaxHealth;
     }
 
-    public void TakeDamage(float Damage)
+    // Applies damage to the enemy
+    public void TakeDamage(float Damage, DamageType damageType = DamageType.defaultDamage)
     {
         float damageTaken = Mathf.Clamp(Damage, 0, CurrentHealth);
 
-        CurrentHealth -= damageTaken;
+        CurrentHealth -= damageCalculator.BasicDamage(damageTaken, damageType, weakness, immunity);
 
         if (damageTaken != 0)
         {

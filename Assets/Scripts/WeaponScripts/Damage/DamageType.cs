@@ -3,13 +3,14 @@ namespace WeaponsScripts.Damage
 {
     public enum DamageType
     {
-        fireDamage,
+        emberDamage,
         frostDamage,
         crystalDamage,
         poisonDamage,
         magicDamage,
         ballisticDamage,
-        explosiveDamage
+        explosiveDamage,
+        defaultDamage
     }
 }
 

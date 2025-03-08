@@ -406,7 +406,7 @@ namespace WeaponsScripts
             if (HitCollider.TryGetComponent(out IDamageable damageable))
             {
                 // Implement damage calculator functionality here
-                damageable.TakeDamage(DamageConfig.GetDamage(DistanceTraveled));
+                damageable.TakeDamage(DamageConfig.GetDamage(DistanceTraveled), DamageConfig.DamageType);
             }
 
             foreach (ICollisionHandler handler in BulletImpactEffects)

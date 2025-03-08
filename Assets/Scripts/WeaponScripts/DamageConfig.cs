@@ -17,6 +17,10 @@ namespace WeaponsScripts
             DamageCurve.mode = ParticleSystemCurveMode.Curve;
         }
 
+        //<summary>
+        // Return base damage and damage type for damage calculator to calculate final damage
+        //</summary>
+
         public int GetDamage(float Distance = 0)
         {
             return Mathf.CeilToInt(DamageCurve.Evaluate(Distance, Random.value));
