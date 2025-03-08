@@ -1,9 +1,8 @@
 using System.Collections;
-using Managers;
 using UnityEngine;
 using UnityEngine.Pool;
-using WeaponsScripts.Damage;
 using WeaponsScripts.ImpactEffects;
+using Managers;
 
 
 namespace WeaponsScripts
@@ -55,7 +54,7 @@ namespace WeaponsScripts
 
             this.ActiveMonoBehavior = ActiveMonoBehavior;
             this.ActiveCamera = ActiveCamera;
-            LastShootTime = 0;
+
             TrailPool = new ObjectPool<TrailRenderer>(CreateTrail);
 
             if (ShootConfig.firingType == FiringType.projectile)
@@ -65,7 +64,10 @@ namespace WeaponsScripts
 
             Model = Instantiate(ModelPrefab);
             Model.transform.SetParent(Parent, false);
-            Model.transform.SetLocalPositionAndRotation(SpawnPoint, Quaternion.Euler(SpawnRotation));
+            Model.transform.localPosition = SpawnPoint;
+            Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
+            // Model.transform.SetLocalPositionAndRotation(SpawnPoint, Quaternion.Euler(SpawnRotation));
+
 
             ShootSystem = Model.GetComponentInChildren<ParticleSystem>();
         }
@@ -214,7 +216,7 @@ namespace WeaponsScripts
             {
                 float lastDuration = Mathf.Clamp(
                     0,
-                    StopShootTime - InitialClickTime,
+                    (StopShootTime - InitialClickTime),
                     ShootConfig.MaxSpreadTime
                 );
                 float lerptTime = (ShootConfig.RecoilRecoverySpeed - (Time.time - StopShootTime)) / ShootConfig.RecoilRecoverySpeed;
@@ -239,9 +241,10 @@ namespace WeaponsScripts
                 for (int i = 0; i < ShootConfig.BulletsPerShot; i++)
                 {
                     Vector3 spreadAmount = ShootConfig.GetSpread(Time.time - InitialClickTime);
+                    Model.transform.forward += Model.transform.TransformDirection(spreadAmount);
 
                     Vector3 shootDirection = Vector3.zero;
-                    Model.transform.forward += Model.transform.TransformDirection(spreadAmount);
+
                     if (ShootConfig.AimType == AimType.FromWeapon)
                     {
                         shootDirection = ShootSystem.transform.forward;
@@ -249,12 +252,12 @@ namespace WeaponsScripts
                     else
                     {
                         shootDirection = ActiveCamera.transform.forward
-                            + ActiveCamera.transform.TransformDirection(shootDirection);
+                            + ActiveCamera.transform.TransformDirection(spreadAmount);
                     }
-
+        
                     if (ShootConfig.firingType == FiringType.hitscan)
                     {
-                        HitscanShoot(shootDirection);
+                        HitscanShoot(shootDirection, GetRaycastOrigin(), ShootSystem.transform.position);
                     }
                     else if (ShootConfig.firingType == FiringType.projectile)
                     {
@@ -300,10 +303,10 @@ namespace WeaponsScripts
         //* ## Hitscan logic ##        
         // #############################################################################################################
 
-        private void HitscanShoot(Vector3 shootDirection)
+        private void HitscanShoot(Vector3 shootDirection, Vector3 Origin, Vector3 TrailOrigin)
         {
             if (Physics.Raycast(
-                    GetRaycastOrigin(),
+                    Origin,
                     shootDirection,
                     out RaycastHit hit,
                     float.MaxValue,
@@ -312,7 +315,7 @@ namespace WeaponsScripts
             {
                 ActiveMonoBehavior.StartCoroutine(
                     PlayTrail(
-                        ShootSystem.transform.position,
+                        TrailOrigin,
                         hit.point,
                         hit
                     )
@@ -322,8 +325,8 @@ namespace WeaponsScripts
             {
                 ActiveMonoBehavior.StartCoroutine(
                     PlayTrail(
-                        ShootSystem.transform.position,
-                        ShootSystem.transform.position + (shootDirection * WeaponTrail.MissDistance),
+                        TrailOrigin,
+                        TrailOrigin + (shootDirection * WeaponTrail.MissDistance),
                         new RaycastHit()
                     )
                 );

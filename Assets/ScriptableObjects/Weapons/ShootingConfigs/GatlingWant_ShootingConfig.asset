@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6975118deebd48c4eafbc3aa99577f83, type: 3}
   m_Name: GatlingWant_ShootingConfig
   m_EditorClassIdentifier: 
-  IsHitscan: 1
   firingType: 0
   projectilePrefab: {fileID: 0}
   BulletSpawnForce: 1000
@@ -20,10 +19,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 193
   FireRate: 0.1
-  AimType: 0
+  BulletsPerShot: 1
   RecoilRecoverySpeed: 1
   MaxSpreadTime: 1
+  BulletWeight: 0.1
+  AimType: 0
   SpreadType: 2
   Spread: {x: 0.1, y: 0.1, z: 0.1}
+  MinSpread: {x: 0, y: 0, z: 0}
   SpreadMultiplier: 0.04
   SpreadTexture: {fileID: 2800000, guid: 0283562f7105f004f91469c4cda6861f, type: 3}
