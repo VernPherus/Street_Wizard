@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c81261258e45a418416185270a97c6, type: 3}
   m_Name: Frost_SummonConfig
   m_EditorClassIdentifier: 
+  ManaConsumption: 0
+  SummonCooldown: 0
+  ImbueDuration: 0
+  DamageOverride: 0
+  ImpactTypeOverride: {fileID: 11400000, guid: 35caf4dc6d153ca44aa46b6d828d84e2, type: 2}
+  DamageTypeOverride: 1

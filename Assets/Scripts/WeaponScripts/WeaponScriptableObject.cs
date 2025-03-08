@@ -15,7 +15,6 @@ namespace WeaponsScripts
 
         public ImpactType ImpactType;
         public WeaponType weaponType;
-        public DamageType damageType;
         public GameObject ModelPrefab;
 
         public Vector3 SpawnPoint;
@@ -406,6 +405,7 @@ namespace WeaponsScripts
 
             if (HitCollider.TryGetComponent(out IDamageable damageable))
             {
+                // Implement damage calculator functionality here
                 damageable.TakeDamage(DamageConfig.GetDamage(DistanceTraveled));
             }
 
