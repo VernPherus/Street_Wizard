@@ -1,7 +1,6 @@
 using UnityEngine;
-using WeaponsScripts.Damage;
 
-public class Dummy_WeakToFrost : MonoBehaviour
+public class Dummy_WeakToCrystal : MonoBehaviour
 {
     public EnemyHealth health;
 

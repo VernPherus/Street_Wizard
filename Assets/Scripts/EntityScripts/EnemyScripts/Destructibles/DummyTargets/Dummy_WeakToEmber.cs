@@ -1,10 +1,9 @@
 using UnityEngine;
 using WeaponsScripts.Damage;
 
-public class Dummy_WeakToFire : MonoBehaviour
+public class Dummy_WeakToEmber : MonoBehaviour
 {
     public EnemyHealth health;
-    public DamageType weakness;
 
     private void Start()
     {

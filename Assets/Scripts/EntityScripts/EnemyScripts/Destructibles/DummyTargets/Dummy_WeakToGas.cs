@@ -1,7 +1,7 @@
 using UnityEngine;
 using WeaponsScripts.Damage;
 
-public class Dummy_WeakToFrost : MonoBehaviour
+public class Dummy_WeakToGas : MonoBehaviour
 {
     public EnemyHealth health;
 
@@ -13,5 +13,4 @@ public class Dummy_WeakToFrost : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
 }
