@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(IDamageable))]
@@ -6,6 +7,8 @@ public class SpawnParticlesOnDeath : MonoBehaviour
     [SerializeField]
     private ParticleSystem DeathSystem;
     public IDamageable Damageable;
+
+    private ParticleSystem spawnedParticle;
 
     private void Awake()
     {
@@ -19,6 +22,13 @@ public class SpawnParticlesOnDeath : MonoBehaviour
 
     private void Damageable_OnDeath(Vector3 Position)
     {
-        Instantiate(DeathSystem, Position, Quaternion.identity);
+        spawnedParticle = Instantiate(DeathSystem, Position, Quaternion.identity);
+        // StartCoroutine(DestroyAfterSeconds());
     }
+
+    // private IEnumerator DestroyAfterSeconds()   
+    // {
+    //     yield return new WaitForSeconds(5);
+    //     Destroy(spawnedParticle);
+    // }
 }

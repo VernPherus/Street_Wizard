@@ -9,6 +9,7 @@ public class Dummy_WeakToGas : MonoBehaviour
     {
         health.OnDeath += SelfDestruct;
     }
+    
     private void SelfDestruct(Vector3 Position)
     {
         Destroy(gameObject);

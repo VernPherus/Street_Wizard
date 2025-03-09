@@ -31,16 +31,18 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     // Applies damage to the enemy
     public void TakeDamage(float Damage, DamageType damageType = DamageType.defaultDamage)
     {
-        float damageTaken = Mathf.Clamp(Damage, 0, CurrentHealth);
+        float damageTaken = Mathf.Clamp(damageCalculator.BasicDamage(Damage, damageType, weakness, immunity), 0, CurrentHealth);
 
-        CurrentHealth -= damageCalculator.BasicDamage(damageTaken, damageType, weakness, immunity);
+        CurrentHealth -= damageTaken;
+
+        Debug.Log($"Damage Dealth: {damageTaken}");
 
         if (damageTaken != 0)
         {
             OnTakeDamage?.Invoke(damageTaken);
         }
 
-        if (CurrentHealth == 0 && damageTaken != 0)
+        if (CurrentHealth <= 0 && damageTaken != 0)
         {
             OnDeath?.Invoke(transform.position);
         }

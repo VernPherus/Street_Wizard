@@ -1,8 +1,10 @@
 using UnityEngine;
 using Managers;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+
 
 public class HUDController : MonoBehaviour
 {
@@ -13,9 +15,29 @@ public class HUDController : MonoBehaviour
 
     [SerializeField] private PlayerDashScript playerDashScript;
 
+    [Header("UI Icons")]
+    [SerializeField] private List<Sprite> RuneIcons = new();
+
     [Header("UI Elements")]
+
+    [Header("Dash")]
     [SerializeField] private List<Image> DashThreshold = new();
+
+    [Header("Weapons")]
     [SerializeField] private TextMeshProUGUI AmmoCounter = null;
+    [SerializeField] private TextMeshProUGUI WeaponName = null;
+
+    [Header("Runes")]
+    [SerializeField] private GameObject SummonStats = null;
+    [SerializeField] private Image RuneContainer = null;
+    [SerializeField] private Image SpellSequence = null;
+
+    [Header("Player Stats")]
+    [SerializeField] private TextMeshProUGUI ManaCounter = null;
+
+    [Header("Dialogue Box")]
+    [SerializeField] private GameObject DialogueBox = null;
+    [SerializeField] private TextMeshProUGUI DialogueText = null;
 
     private void Awake()
     {
@@ -23,14 +45,21 @@ public class HUDController : MonoBehaviour
         // SummonManager = GetComponent<SummonManager>();
         // PlayerFPSController = PlayerFPSController.Instance;
 
+        DialogueBox.SetActive(false);
+        SummonStats.SetActive(false);
+
         Debug.Log("UI Setup complete.");
     }
 
     private void Update()
     {
-        HandleAmmoCounter();
+        HandleWeaponStats();
         HandleDashThreshold();
     }
+
+    // #############################################################################################################
+    //* ## Dash display logic ##        
+    // #############################################################################################################
 
     public void HandleDashThreshold()
     {
@@ -40,12 +69,58 @@ public class HUDController : MonoBehaviour
         {
             DashThreshold[i].fillAmount = i < currentDashes ? 1f : 0f;
         }
-
     }
 
-    public void HandleAmmoCounter()
+    // #############################################################################################################
+    //* ## Weapon Stats logic ##        
+    // #############################################################################################################
+
+    public void HandleWeaponStats()
     {
-        AmmoCounter.SetText($"Ammo: {WeaponManager.ActiveWeapon.AmmoConfig.CurrentAmmo}");
+        AmmoCounter.SetText($"{WeaponManager.ActiveWeapon.AmmoConfig.CurrentAmmo}");
+        WeaponName.SetText($"{WeaponManager.ActiveWeapon.weaponName}");
     }
+
+    // #############################################################################################################
+    //* ## Rune Stats logic ##        
+    // #############################################################################################################
+
+    public void HandleRuneContainer()
+    {
+        SummonStats.SetActive(true);
+    }
+
+    // #############################################################################################################
+    //* ## Player stats display logic ##        
+    // #############################################################################################################
+
+    public void HandleManaCounter()
+    {
+        RuneContainer.sprite = RuneIcons[0];
+    }
+
+    public void HandleInputCounter() { }
+
+    public void HandleUnlockedKeysContainer() { }
+
+
+    // #############################################################################################################
+    //* ## DialogueBox logic ##        
+    // #############################################################################################################
+
+    public void HandleDialogueBox(string Dialogue, int ActiveTime)
+    {
+        DialogueText.SetText(Dialogue);
+        StartCoroutine(DialogueBoxTimer(ActiveTime));
+    }
+
+    private IEnumerator DialogueBoxTimer(int CountDown)
+    {
+        DialogueBox.SetActive(true);
+        yield return new WaitForSeconds(CountDown);
+        DialogueBox.SetActive(false);
+    }
+
+
 
 }
