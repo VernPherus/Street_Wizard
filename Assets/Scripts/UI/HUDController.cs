@@ -103,7 +103,6 @@ public class HUDController : MonoBehaviour
 
     public void HandleUnlockedKeysContainer() { }
 
-
     // #############################################################################################################
     //* ## DialogueBox logic ##        
     // #############################################################################################################
@@ -113,14 +112,11 @@ public class HUDController : MonoBehaviour
         DialogueText.SetText(Dialogue);
         StartCoroutine(DialogueBoxTimer(ActiveTime));
     }
-
     private IEnumerator DialogueBoxTimer(int CountDown)
     {
         DialogueBox.SetActive(true);
         yield return new WaitForSeconds(CountDown);
         DialogueBox.SetActive(false);
     }
-
-
 
 }

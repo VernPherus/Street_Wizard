@@ -5,6 +5,7 @@
 using System;
 using UnityEngine;
 using Managers;
+using WeaponsScripts;
 
 public class PlayerFPSController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class PlayerFPSController : MonoBehaviour
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private playerSummonInput summonInput;
     [SerializeField] private SummonManager summonManager;
+    [SerializeField] private WeaponSwayNBob weaponSwayNBob;
 
 
 
@@ -106,6 +108,10 @@ public class PlayerFPSController : MonoBehaviour
         verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
 
         mainCam.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+
+        // for weapon sway
+        weaponSwayNBob.Sway(inputHandler.LookInput);
+        weaponSwayNBob.SwayRotation(inputHandler.LookInput);
     }
 
     private void HandleMovement()
@@ -126,6 +132,10 @@ public class PlayerFPSController : MonoBehaviour
         HandleDash();
 
         characterController.Move(currentMovement * Time.deltaTime);
+
+        // for weapon bob
+        weaponSwayNBob.BobOffset(worldDirection);
+        weaponSwayNBob.BobRotation(worldDirection);
     }
 
     private void HandleJumping()
