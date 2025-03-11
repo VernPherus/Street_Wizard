@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8187739aa705f1d48a01acf1fb349f23, type: 3}
   m_Name: Frost_ManaConfiguration
   m_EditorClassIdentifier: 
-  ManaConsumption: 0
+  ManaConsumption: 20

@@ -16,7 +16,6 @@ namespace Managers
         [SerializeField] RuneType Rune;
         [SerializeField] private Transform runeParent;
         [SerializeField] private List<RuneScriptableObject> runeList;
-        [SerializeField] private List<MonoBehaviour> runeModifierList;
         [SerializeField] Dictionary<string, RuneType> RuneDictionary;
         private WeaponManager weaponManager;
         [SerializeField] private Transform target;
@@ -25,14 +24,14 @@ namespace Managers
         [Header("Runtime Filled")]
         public RuneScriptableObject activeRune;
 
-        public bool HasSummoned { get; set; }
+        [Header("Player Mana")]
+        [SerializeField]
+        private PlayerMana playerMana;
 
+        public bool CanSummon { get; set; }
 
         private GameObject ActiveRuneObject;
-
         private RuneScriptableObject rune;
-
-
 
         private void Awake()
         {
@@ -50,14 +49,25 @@ namespace Managers
                 Debug.Log($"Key:{rune.Key}, Value:{rune.Value}");
             }
 
-            DamageModifier damageModifierA = new() { Amount = 100f, AttributeName = "DamageConfig/DamageCurve" },
+            CanSummon = true;
 
-            tempList = new()
+            // DamageModifier damageModifierA = new() { Amount = 100f, AttributeName = "DamageConfig/DamageCurve" },
+
+            // tempList = new()
+            // {
+
+
+            // };
+
+        }
+
+        private bool CheckManaIfCanSummon()
+        {
+            if (playerMana.CurrentMana >= rune.summonConfig.ManaConsumption)
             {
-
-
-            };
-
+                return true;
+            }
+            return false;
         }
 
         // #############################################################################################################
@@ -78,16 +88,25 @@ namespace Managers
                 throw;
             }
 
+            if (CanSummon && CheckManaIfCanSummon())
+            {
+                playerMana.CurrentMana -= rune.summonConfig.ManaConsumption;
 
-            activeRune = rune;
-            rune.Spawn(runeParent, this);
-            ActiveRuneObject = GameObject.FindGameObjectWithTag("Rune");
-
+                activeRune = rune;
+                rune.Spawn(runeParent, this);
+                ActiveRuneObject = GameObject.FindGameObjectWithTag("Rune");
+                CanSummon = false;
+            }
+            else
+            {
+                Debug.Log("Can't summon");
+            }
         }
 
         public void DespawnRune()
         {
             Destroy(ActiveRuneObject);
+            CanSummon = true;
         }
 
         // #############################################################################################################
@@ -109,11 +128,13 @@ namespace Managers
             //Start timer before removing effects
 
             StartCoroutine(RemoveImbueAfterTime(activeRune.summonConfig.ImbueDuration));
+            DespawnRune();
         }
 
         private IEnumerator RemoveImbueAfterTime(float duration)
         {
             yield return new WaitForSeconds(duration);
+            CanSummon = true;
 
             Debug.Log($"Removing rune effects of {activeRune.name}.");
 
@@ -124,30 +145,6 @@ namespace Managers
             }
 
         }
-
-        // #############################################################################################################
-        //* ## Effects Logic ##        
-        // #############################################################################################################
-
-        // IEnumerator MoveSpell(Vector3 targetPosition)
-        // {
-        //     Vector3 startPosition = activeRune.SpawnPoint;
-
-        //     float moveDuration = 5;
-        //     float timeElapsed = 0;
-        //     while (timeElapsed < moveDuration)
-        //     {
-        //         ActiveRuneObject.transform.position = Vector3.Lerp(startPosition, targetPosition, timeElapsed / moveDuration);
-        //         timeElapsed += Time.deltaTime;
-        //         yield return null;
-        //     }
-
-        //     ActiveRuneObject.transform.position = targetPosition;
-        // }
-
-
-
-
     }
 }
 

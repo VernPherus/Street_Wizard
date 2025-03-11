@@ -15,6 +15,7 @@ public class SummonConfig : ScriptableObject
     [SerializeField] public float DamageOverride;
     [SerializeField] public ImpactType ImpactTypeOverride;
     [SerializeField] public DamageType DamageTypeOverride;
+    // [SerializeField] public float DamageMultiplierOverride;
 
     public List<IModifier> modifiers = new();
 
@@ -35,7 +36,7 @@ public class SummonConfig : ScriptableObject
         };
 
         ImpactTypeModifier impactTypeModifier = new()
-        { 
+        {
             Amount = ImpactTypeOverride,
         };
 

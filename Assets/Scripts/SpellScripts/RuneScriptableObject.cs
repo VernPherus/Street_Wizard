@@ -19,7 +19,6 @@ public class RuneScriptableObject : ScriptableObject
 
     private ParticleSystem RuneParticleSystem;
 
-    public ManaConfig manaConfig;
     public SummonConfig summonConfig;
 
     private MonoBehaviour activeMonoBehavior;
@@ -35,8 +34,9 @@ public class RuneScriptableObject : ScriptableObject
         RuneParticleSystem = RuneModel.GetComponentInChildren<ParticleSystem>();
     }
 
-    
-
-
+    public void DisableParticles()
+    {
+        RuneParticleSystem.Stop();
+    }
 
 }

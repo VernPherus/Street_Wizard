@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c81261258e45a418416185270a97c6, type: 3}
   m_Name: Gas_SummonConfig
   m_EditorClassIdentifier: 
-  ManaConsumption: 0
-  SummonCooldown: 0
-  ImbueDuration: 0
-  DamageOverride: 0
+  ManaConsumption: 80
+  SummonCooldown: 30
+  ImbueDuration: 30
+  DamageOverride: 40
   ImpactTypeOverride: {fileID: 11400000, guid: f7c26be9f479eb442b020e6ac0de4b15, type: 2}
   DamageTypeOverride: 3
