@@ -12,6 +12,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] private WeaponManager WeaponManager;
     [SerializeField] private SummonManager SummonManager;
     [SerializeField] private PlayerFPSController PlayerFPSController;
+    [SerializeField] private PlayerStats PlayerStats;
 
     [SerializeField] private PlayerDashScript playerDashScript;
 
@@ -33,6 +34,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] private Image SpellSequence = null;
 
     [Header("Player Stats")]
+    [SerializeField] private TextMeshProUGUI HealthCounter = null;
     [SerializeField] private TextMeshProUGUI ManaCounter = null;
 
     [Header("Dialogue Box")]
@@ -55,6 +57,7 @@ public class HUDController : MonoBehaviour
     {
         HandleWeaponStats();
         HandleDashThreshold();
+        HandlePlayerStats();
     }
 
     // #############################################################################################################
@@ -93,6 +96,12 @@ public class HUDController : MonoBehaviour
     // #############################################################################################################
     //* ## Player stats display logic ##        
     // #############################################################################################################
+
+    public void HandlePlayerStats()
+    {
+        HealthCounter.SetText($"{PlayerStats.health.CurrentHealth}");
+        ManaCounter.SetText($"{PlayerStats.mana.CurrentMana}");
+    }
 
     public void HandleManaCounter()
     {

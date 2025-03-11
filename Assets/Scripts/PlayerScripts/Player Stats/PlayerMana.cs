@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerMana
+public class PlayerMana : MonoBehaviour
 {
-    public float MaxMana;
-    public float CurrentMana;
+    public float MaxMana = 200f;
+    public float CurrentMana = 100f;
     public float RegenAmount;
 
     private bool IsRegenerating = false;
@@ -12,7 +12,7 @@ public class PlayerMana
 
     private void Start()
     {
-        CurrentMana = MaxMana;
+        //CurrentMana = MaxMana;
     }
 
     public void ConsumeMana(float Amount)
