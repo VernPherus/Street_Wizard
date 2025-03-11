@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca01cef7c9190ef4081ef0a99aad1860, type: 3}
   m_Name: Limitless_AmmoConfig
   m_EditorClassIdentifier: 
-  MaxAmmo: 99999
-  CurrentAmmo: 99999
+  MaxAmmo: 1
+  CurrentAmmo: 1
+  IsInfinite: 1

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using WeaponsScripts.ImpactEffects;
 using Managers;
+using Unity.VisualScripting;
 
 
 namespace WeaponsScripts
@@ -23,10 +24,12 @@ namespace WeaponsScripts
         public AmmoConfig AmmoConfig;
         public ShootConfig ShootConfig;
         public WeaponTrail WeaponTrail;
+        public AudioConfig AudioConfig;
 
         public ICollisionHandler[] BulletImpactEffects = new ICollisionHandler[0];
 
         private GameObject Model;
+        private AudioSource ShootingAudioSource;
         private Camera ActiveCamera;
 
         private float LastShootTime;
@@ -70,6 +73,7 @@ namespace WeaponsScripts
 
 
             ShootSystem = Model.GetComponentInChildren<ParticleSystem>();
+            ShootingAudioSource = Model.GetComponent<AudioSource>();
         }
 
         /// <summary>
@@ -104,10 +108,7 @@ namespace WeaponsScripts
             if (WantsToShoot)
             {
                 LastFrameWantedToShoot = true;
-                if (AmmoConfig.CurrentAmmo > 0)
-                {
-                    TryToShoot();
-                }
+                TryToShoot();
 
             }
             if (!WantsToShoot && LastFrameWantedToShoot)
@@ -147,7 +148,6 @@ namespace WeaponsScripts
             }
 
             instance.transform.position = Endpoint;
-
 
             if (Hit.collider != null)
             {
@@ -227,6 +227,12 @@ namespace WeaponsScripts
 
             if (Time.time > ShootConfig.FireRate + LastShootTime)
             {
+                if (AmmoConfig.CurrentAmmo == 0)
+                {
+                    AudioConfig.PlayeOutOfAmmoClip(ShootingAudioSource);
+                    return;
+                }
+
                 LastShootTime = Time.time;
                 if (AmmoConfig.CurrentAmmo == 0)
                 {
@@ -235,8 +241,12 @@ namespace WeaponsScripts
                 }
 
                 ShootSystem.Play();
+                AudioConfig.PlayeShootingClip(ShootingAudioSource);
 
-                AmmoConfig.CurrentAmmo--;
+                if (!AmmoConfig.IsInfinite)
+                {
+                    AmmoConfig.CurrentAmmo--;
+                }
 
                 for (int i = 0; i < ShootConfig.BulletsPerShot; i++)
                 {
@@ -254,7 +264,7 @@ namespace WeaponsScripts
                         shootDirection = ActiveCamera.transform.forward
                             + ActiveCamera.transform.TransformDirection(spreadAmount);
                     }
-        
+
                     if (ShootConfig.firingType == FiringType.hitscan)
                     {
                         HitscanShoot(shootDirection, GetRaycastOrigin(), ShootSystem.transform.position);
@@ -451,6 +461,7 @@ namespace WeaponsScripts
             config.ShootConfig = ShootConfig.Clone() as ShootConfig;
             config.AmmoConfig = AmmoConfig.Clone() as AmmoConfig;
             config.WeaponTrail = WeaponTrail.Clone() as WeaponTrail;
+            config.AudioConfig = AudioConfig.Clone() as AudioConfig;
 
 
             config.ModelPrefab = ModelPrefab;

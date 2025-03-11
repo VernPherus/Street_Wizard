@@ -15,7 +15,6 @@ MonoBehaviour:
   weaponName: Gatling Wand
   ImpactType: {fileID: 11400000, guid: 136c9b9319c362443b04675ce59bd105, type: 2}
   weaponType: 2
-  damageType: 4
   ModelPrefab: {fileID: 1375838402061136035, guid: fe19f189d16986042aaaddc87c9cb0f4, type: 3}
   SpawnPoint: {x: 0.206, y: -0.218, z: 0.301}
   SpawnRotation: {x: 0, y: 0, z: 0}
@@ -23,3 +22,4 @@ MonoBehaviour:
   AmmoConfig: {fileID: 11400000, guid: 07510e52e68d4d84aa58f748531fa242, type: 2}
   ShootConfig: {fileID: 11400000, guid: 91bce9609b38bb34ea71f7be3bc6e3ac, type: 2}
   WeaponTrail: {fileID: 11400000, guid: fd73ceaa89f49764abd743a0eb9471a1, type: 2}
+  AudioConfig: {fileID: 11400000, guid: e104f9f650bbeea488ebf232d14154fe, type: 2}

@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: BigBore
   m_EditorClassIdentifier: 
   weaponName: Big Bore
-  ImpactType: {fileID: 11400000, guid: 136c9b9319c362443b04675ce59bd105, type: 2}
+  ImpactType: {fileID: 11400000, guid: 284adae024cbf0d449dff80c8c86b6e2, type: 2}
   weaponType: 3
-  damageType: 6
   ModelPrefab: {fileID: 2100845535207288955, guid: acf0f170324efc24aad18ee26b20b5f4, type: 3}
   SpawnPoint: {x: 0.226, y: -0.297, z: 0.316}
   SpawnRotation: {x: 0, y: 0, z: 0}
@@ -23,3 +22,4 @@ MonoBehaviour:
   AmmoConfig: {fileID: 11400000, guid: 5c4dc86e07260e048b0d1b3821006aef, type: 2}
   ShootConfig: {fileID: 11400000, guid: a6fea5ff78b75d94482efd3126697095, type: 2}
   WeaponTrail: {fileID: 11400000, guid: 37a9c6cf3d4c421439f3fd92d03737d9, type: 2}
+  AudioConfig: {fileID: 11400000, guid: a535e47eceb464d4eb0127e9a5003842, type: 2}

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d227c3b86fdb2b6478b7d254aed534b0, type: 3}
+  m_Name: RatFood
+  m_EditorClassIdentifier: 
+  weaponName: RatFood
+  ImpactType: {fileID: 0}
+  weaponType: 4
+  ModelPrefab: {fileID: 9060779259170019601, guid: efb8eb749fdf46f42a04ae092d111ba9, type: 3}
+  SpawnPoint: {x: 0.17, y: -0.42, z: 0.5}
+  SpawnRotation: {x: 0, y: 0, z: 0}
+  DamageConfig: {fileID: 11400000, guid: c66906cc77c2fff49bab0bc328eaada1, type: 2}
+  AmmoConfig: {fileID: 11400000, guid: bc617f8b82523f14ebfead52c0e18b50, type: 2}
+  ShootConfig: {fileID: 11400000, guid: 6054cdae4f1a33844a71d2726825e49a, type: 2}
+  WeaponTrail: {fileID: 11400000, guid: 3756ccd518a09e348a000633363ec898, type: 2}
+  AudioConfig: {fileID: 11400000, guid: e368b23091a981c4ba91c3a911375370, type: 2}

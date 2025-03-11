@@ -8,6 +8,11 @@ public class GunPickup : MonoBehaviour
     public WeaponScriptableObject Weapon;
     public Vector3 SpinDirection = Vector3.up;
 
+    [SerializeField]
+    private UnlockPickupData unlockPickupData;
+
+    private PlayerStats playerStats;
+
     private void Update()
     {
         transform.Rotate(SpinDirection);
@@ -18,6 +23,7 @@ public class GunPickup : MonoBehaviour
         if (other.TryGetComponent(out WeaponManager WeaponManager))
         {
             WeaponManager.PickupGun(Weapon);
+
             Destroy(gameObject);
         }
     }

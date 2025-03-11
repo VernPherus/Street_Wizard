@@ -9,6 +9,8 @@ namespace WeaponsScripts
 
         public int CurrentAmmo = 30;
 
+        public bool IsInfinite = false;
+
         public void Replenish()
         {
             // add functionality of adding ammo from pickups

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firingType: 0
   projectilePrefab: {fileID: 0}
-  BulletSpawnForce: 100
+  BulletSpawnForce: 1000
   Hitmask:
     serializedVersion: 2
     m_Bits: 193

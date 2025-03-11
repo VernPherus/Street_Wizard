@@ -7,6 +7,7 @@ namespace WeaponsScripts
         Banisher,
         GatlingWand,
         BigBore,
+        RatFood,
         //Smiter,
         //MAW,
         //Knife

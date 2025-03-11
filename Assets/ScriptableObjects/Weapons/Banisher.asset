@@ -15,7 +15,6 @@ MonoBehaviour:
   weaponName: Banisher
   ImpactType: {fileID: 11400000, guid: 136c9b9319c362443b04675ce59bd105, type: 2}
   weaponType: 1
-  damageType: 5
   ModelPrefab: {fileID: 4647422190906306214, guid: cfd77e81b4f95ab42af4ff70d7d6beec, type: 3}
   SpawnPoint: {x: 0.17, y: -0.46899956, z: 0.75}
   SpawnRotation: {x: 0, y: 90, z: 0}
@@ -23,3 +22,4 @@ MonoBehaviour:
   AmmoConfig: {fileID: 11400000, guid: 05b10c5e516674140947e4bbf9ecf3e5, type: 2}
   ShootConfig: {fileID: 11400000, guid: 7d6d007ad07f052469a9d3bf3438ab8a, type: 2}
   WeaponTrail: {fileID: 11400000, guid: 5bc397754df99d6489b6fdd5511075a1, type: 2}
+  AudioConfig: {fileID: 11400000, guid: 38d2ccb511d788340a225f3788c6c587, type: 2}

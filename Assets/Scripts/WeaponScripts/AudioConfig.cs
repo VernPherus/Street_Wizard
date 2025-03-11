@@ -1,18 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using WeaponsScripts;
 
-public class AudioConfig : MonoBehaviour
+[CreateAssetMenu(fileName = "Audio Config", menuName = "Weapons/AudioConfig")]
+public class AudioConfig : ScriptableObject, System.ICloneable
 {
-    // Start is called before the first frame update
-    void Start()
+    [Range(0, 1f)]
+    public float Volume = 1f;
+    public AudioClip[] FireClips;
+    public AudioClip EmptyClip;
+
+    public void PlayeShootingClip(AudioSource AudioSource)
     {
-        
+        AudioSource.PlayOneShot(FireClips[Random.Range(0, FireClips.Length)], Volume);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayeOutOfAmmoClip(AudioSource AudioSource)
     {
-        
+        if (EmptyClip != null)
+        {
+            AudioSource.PlayOneShot(EmptyClip, Volume);
+        }
     }
+
+    public object Clone()
+    {
+        AudioConfig config = CreateInstance<AudioConfig>();
+
+        Utilities.CopyValues(this, config);
+
+        return config;
+    }
+
+
 }
