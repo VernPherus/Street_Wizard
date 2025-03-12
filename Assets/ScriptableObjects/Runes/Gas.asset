@@ -15,8 +15,7 @@ MonoBehaviour:
   runeName: Gas
   runeSequenceId: ULRR
   runeType: 3
-  runePrefab: {fileID: 0}
-  SpawnPoint: {x: 0, y: 0, z: 0}
+  runePrefab: {fileID: 1590760361693314115, guid: 7448c9393404bdf49acec6687dc96503, type: 3}
+  SpawnPoint: {x: -0.247, y: -0.503, z: 0.994}
   SpawnRotation: {x: 0, y: 0, z: 0}
-  manaConfig: {fileID: 11400000, guid: d802479c38d5ca94b9d6d385cb223219, type: 2}
   summonConfig: {fileID: 11400000, guid: bfdfb0c9ce0f4c645b2ac9ec82e4e009, type: 2}

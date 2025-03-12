@@ -4,7 +4,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputHandler : MonoBehaviour
+public class    PlayerInputHandler : MonoBehaviour
 {
     [Header("Input Action Asset")]
     [SerializeField] private InputActionAsset playerControls;

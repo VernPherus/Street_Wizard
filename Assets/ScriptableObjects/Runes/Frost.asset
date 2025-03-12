@@ -15,8 +15,7 @@ MonoBehaviour:
   runeName: Frost
   runeSequenceId: LRLR
   runeType: 1
-  runePrefab: {fileID: 0}
-  SpawnPoint: {x: 0, y: 0, z: 0}
+  runePrefab: {fileID: 6315122793673136919, guid: ec239c4b586c71c48955fa204b621a86, type: 3}
+  SpawnPoint: {x: -0.39398685, y: -0.54099935, z: 0.936}
   SpawnRotation: {x: 0, y: 0, z: 0}
-  manaConfig: {fileID: 11400000, guid: 8c6efcd30982e3f4a805266a4a3a4f29, type: 2}
   summonConfig: {fileID: 11400000, guid: 59a6624977734b842b43c385d265ed6b, type: 2}

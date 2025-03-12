@@ -15,8 +15,7 @@ MonoBehaviour:
   runeName: Crystal
   runeSequenceId: ULRD
   runeType: 2
-  runePrefab: {fileID: 0}
-  SpawnPoint: {x: 0, y: 0, z: 0}
+  runePrefab: {fileID: 6883641983772468062, guid: eea05a3bbfea3124c8c752431500fb23, type: 3}
+  SpawnPoint: {x: -0.346, y: -0.392, z: 0.884}
   SpawnRotation: {x: 0, y: 0, z: 0}
-  manaConfig: {fileID: 11400000, guid: ee0d00ae57a9cd246843f9e5bdb5ab71, type: 2}
   summonConfig: {fileID: 11400000, guid: 2cda20413263db844bc57aa62702de35, type: 2}

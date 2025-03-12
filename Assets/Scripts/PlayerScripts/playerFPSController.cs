@@ -207,6 +207,7 @@ public class PlayerFPSController : MonoBehaviour
 
         if (inputHandler.CrouchValue != 0)
         {
+            Debug.Log("Triggered despawn rune");
             summonInput.DespawnRune();
         }
 

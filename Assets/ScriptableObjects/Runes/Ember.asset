@@ -15,8 +15,7 @@ MonoBehaviour:
   runeName: Ember Rune
   runeSequenceId: DUDU
   runeType: 0
-  runePrefab: {fileID: 4402022558251056612, guid: 387042fca4b94a346a90080966de1d08, type: 3}
-  SpawnPoint: {x: -0.148, y: -0.202, z: 0.675}
-  SpawnRotation: {x: -90, y: 0, z: 0}
-  manaConfig: {fileID: 11400000, guid: f2be7aaeaecb16e459082356bf31726c, type: 2}
+  runePrefab: {fileID: 2804169337167724131, guid: eca081375a8db994a9a739a306411f9a, type: 3}
+  SpawnPoint: {x: -0.4, y: -0.36, z: 1.18}
+  SpawnRotation: {x: 0, y: 0, z: 0}
   summonConfig: {fileID: 11400000, guid: d30f942896fbd454882f64bcf9974821, type: 2}

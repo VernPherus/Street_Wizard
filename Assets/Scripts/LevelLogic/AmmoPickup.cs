@@ -5,8 +5,7 @@ using Managers;
 [RequireComponent(typeof(Collider))]
 public class AmmoPickup : MonoBehaviour
 {
-    public WeaponType Type;
-    public int AmmoAmount = 30;
+    AmmoPickupData AmmoPickupData;
     public Vector3 SpinDirection = Vector3.up;
 
     private void Update()
@@ -17,9 +16,9 @@ public class AmmoPickup : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out WeaponManager WeaponSelector)
-            && WeaponSelector.ActiveWeapon.weaponType == Type)
+            && WeaponSelector.ActiveWeapon.weaponType == AmmoPickupData.AmmoType)
         {
-            WeaponSelector.ActiveWeapon.AmmoConfig.AddAmmo(AmmoAmount);
+            WeaponSelector.ActiveWeapon.AmmoConfig.AddAmmo(AmmoPickupData.AmmoAmount);
             Destroy(gameObject);
         }
     }

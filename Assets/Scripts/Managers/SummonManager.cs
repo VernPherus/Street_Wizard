@@ -13,7 +13,7 @@ namespace Managers
     public class SummonManager : MonoBehaviour
     {
 
-        [SerializeField] RuneType Rune;
+        [SerializeField] RuneType SelectedRune;
         [SerializeField] private Transform runeParent;
         [SerializeField] private List<RuneScriptableObject> runeList;
         [SerializeField] Dictionary<string, RuneType> RuneDictionary;
@@ -51,14 +51,6 @@ namespace Managers
 
             CanSummon = true;
 
-            // DamageModifier damageModifierA = new() { Amount = 100f, AttributeName = "DamageConfig/DamageCurve" },
-
-            // tempList = new()
-            // {
-
-
-            // };
-
         }
 
         private bool CheckManaIfCanSummon()
@@ -80,7 +72,7 @@ namespace Managers
 
             try
             {
-                rune = runeList.Find(rune => RuneDictionary[id] == Rune);
+                rune = runeList.Find(rune => rune.runeSequenceId == id);
             }
             catch (System.Exception)
             {
