@@ -19,7 +19,7 @@ public class    PlayerInputHandler : MonoBehaviour
     [SerializeField] private string runeInputs = "RuneInputs";
     [SerializeField] private string interact = "Interact";
     [SerializeField] private string fire = "Fire";
-    [SerializeField] private string crouch = "Crouch";
+    [SerializeField] private string crouch = "CtrlInput";
     [SerializeField] private string conjure = "Conjure";
     [SerializeField] private string sprint = "Sprint";
     [SerializeField] private string jump = "Jump";

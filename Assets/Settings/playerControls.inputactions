@@ -33,6 +33,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Scroll",
+                    "type": "Value",
+                    "id": "34e3a3f6-9475-49c3-abc5-ec20492fefe1",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "SwitchWeapons",
                     "type": "Value",
                     "id": "d680f251-42df-46a2-9f30-02454afb796e",
@@ -60,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Crouch",
+                    "name": "CtrlInput",
                     "type": "Button",
                     "id": "1b076341-7429-4770-93f1-b3859aff0973",
                     "expectedControlType": "",
@@ -295,6 +304,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c29ca826-ae86-407b-bad2-01d227dc8a4a",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "SwitchWeapons",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "91e82be9-255e-4d01-a17f-be72b949b237",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -311,7 +331,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Crouch",
+                    "action": "CtrlInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -356,6 +376,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "61c552f2-e3e7-40f8-be11-1e02c38ab34e",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

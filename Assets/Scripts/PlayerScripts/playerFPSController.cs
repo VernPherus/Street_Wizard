@@ -97,7 +97,13 @@ public class PlayerFPSController : MonoBehaviour
         HandleRotation();
         HandleAttack();
         HandleSummonInput();
+        HandleWeaponSwitching();
     }
+
+    // #############################################################################################################
+    //* ## Mouse Logic ##        
+    // #############################################################################################################
+
 
     private void HandleRotation()
     {
@@ -113,6 +119,10 @@ public class PlayerFPSController : MonoBehaviour
         weaponSwayNBob.Sway(inputHandler.LookInput);
         weaponSwayNBob.SwayRotation(inputHandler.LookInput);
     }
+
+    // #############################################################################################################
+    //* ## Movement Logic ##        
+    // #############################################################################################################
 
     private void HandleMovement()
     {
@@ -138,6 +148,10 @@ public class PlayerFPSController : MonoBehaviour
         weaponSwayNBob.BobRotation(worldDirection);
     }
 
+    // #############################################################################################################
+    //* ## Jumping Logic ##        
+    // #############################################################################################################
+
     private void HandleJumping()
     {
         if (characterController.isGrounded)
@@ -154,6 +168,10 @@ public class PlayerFPSController : MonoBehaviour
             currentMovement.y -= gravity * Time.deltaTime;
         }
     }
+
+    // #############################################################################################################
+    //* ## Dash Logic ##        
+    // #############################################################################################################
 
     private void HandleDash()
     {
@@ -188,6 +206,9 @@ public class PlayerFPSController : MonoBehaviour
         return playerDash.GetDashNumber();
     }
 
+    // #############################################################################################################
+    //* ## Combat Logic ##        
+    // #############################################################################################################
 
     // Handle attack input
     private void HandleAttack()
@@ -219,6 +240,24 @@ public class PlayerFPSController : MonoBehaviour
             canImbue = false;
         }
         if (!inputHandler.ConjureTriggered) canImbue = true;
+    }
+
+    private void HandleWeaponSwitching()
+    {
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll != 0)
+        {
+            weaponManager.SwitchWeapon(scroll > 0 ? 1 : -1);
+        }
+
+        // Number key input (1-9)
+        for (int i = 0; i < 9; i++)
+        {
+            if (Input.GetKeyDown((i + 1).ToString()))
+            {
+                weaponManager.SwitchWeaponByIndex(i);
+            }
+        }
     }
 
 

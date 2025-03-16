@@ -1,9 +1,7 @@
-// TODO: FIX NULL REFERENCE ERROR AFTER RESETTING WEAPON.
 using System.Collections.Generic;
 using UnityEngine;
 using WeaponsScripts;
 using WeaponsScripts.Modifiers;
-
 
 namespace Managers
 {
@@ -17,13 +15,14 @@ namespace Managers
 
         private List<IModifier> activeModifiers = new();
 
-
         [Space]
         [Header("Runtime Filled")]
         public WeaponScriptableObject ActiveWeapon;
         [field: SerializeField] public WeaponScriptableObject ActiveBaseWeapon { get; private set; }
 
-        //public Weapon ActiveWeapon { get; private set; }
+        private int BanisherAmmo = 0;
+        private int GatlingWantAmmo = 0;
+        private int BigBoreAmmo = 0;
 
         private void Awake()
         {
@@ -37,6 +36,10 @@ namespace Managers
 
             SetupWeapon(weapon);
         }
+
+        // #############################################################################################################
+        //* ## Weapon Setup Logic ##        
+        // #############################################################################################################
 
         private void SetupWeapon(WeaponScriptableObject Weapon)
         {
@@ -95,9 +98,31 @@ namespace Managers
             Debug.Log("Weapon is reset.");
         }
 
-        // internal void ApplyModifiers(List<IModifier> modifiers)
-        // {
-        //     throw new NotImplementedException();
-        // }
+        // #############################################################################################################
+        //* ## Weapon Switching Logic ##        
+        // #############################################################################################################
+
+        public void SwitchWeapon(int direction)
+        {
+            int currentIndex = weapons.IndexOf(ActiveBaseWeapon);
+            int nextIndex = (currentIndex + direction + weapons.Count) % weapons.Count;
+
+            PickupGun(weapons[nextIndex]);
+        }
+
+        public void SwitchWeaponByIndex(int index)
+        {
+            if (index >= 0 && index < weapons.Count)
+            {
+                PickupGun(weapons[index]);
+            }
+        }
+
+        // #############################################################################################################
+        //* ##  Ammo Persistence Logic ##        
+        // #############################################################################################################
+
+        public void SaveCurrentWeaponAmmo() { }
+
     }
 }
