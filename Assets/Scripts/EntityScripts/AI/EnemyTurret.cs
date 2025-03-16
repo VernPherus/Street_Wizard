@@ -1,5 +1,4 @@
-﻿// using Unity.FPS.Game;
-// using UnityEngine;
+﻿// using UnityEngine;\
 
 // namespace Unity.FPS.AI
 // {
@@ -29,7 +28,7 @@
 //         public AIState AiState { get; private set; }
 
 //         EnemyController m_EnemyController;
-//         Health m_Health;
+//         EnemyHealth m_Health;
 //         Quaternion m_RotationWeaponForwardToPivot;
 //         float m_TimeStartedDetection;
 //         float m_TimeLostDetection;
