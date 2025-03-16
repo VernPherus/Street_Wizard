@@ -29,6 +29,7 @@ namespace Managers
             }
 
             Instance = this;
+            Debug.Log("Surface Manager Successfully setup.");
         }
 
         [SerializeField]

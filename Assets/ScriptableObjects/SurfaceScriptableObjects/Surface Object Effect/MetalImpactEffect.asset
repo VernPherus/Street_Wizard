@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b44f25f4415e14ea46c802213db3ef, type: 3}
-  m_Name: Default
+  m_Script: {fileID: 11500000, guid: 72b4da0c04975e340bfdc8595fa3b033, type: 3}
+  m_Name: MetalImpactEffect
   m_EditorClassIdentifier: 
-  ImpactTypeEffects:
-  - ImpactType: {fileID: 0}
-    SurfaceEffect: {fileID: 0}
+  Prefab: {fileID: 4503612902121041701, guid: 5a936c83b1746f14f9100db745e94f04, type: 3}
+  Probability: 1
+  RandomizeRotation: 0
+  RandomizedRotationMultiplier: {x: 0, y: 0, z: 0}

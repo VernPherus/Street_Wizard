@@ -69,8 +69,6 @@ namespace WeaponsScripts
             Model.transform.SetParent(Parent, false);
             Model.transform.localPosition = SpawnPoint;
             Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
-            // Model.transform.SetLocalPositionAndRotation(SpawnPoint, Quaternion.Euler(SpawnRotation));
-
 
             ShootSystem = Model.GetComponentInChildren<ParticleSystem>();
             ShootingAudioSource = Model.GetComponent<AudioSource>();

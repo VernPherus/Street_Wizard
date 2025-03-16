@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69a869006a5c4064a8d96c36cf656dcf, type: 3}
-  m_Name: Concrete_BulletImpact_Sound
+  m_Name: MetalBulletImpactEffect
   m_EditorClassIdentifier: 
   AudioSourcePrefab: {fileID: 2763497475056735483, guid: 734885b20a856ec429d57fff3a290699, type: 3}
   AudioClips:
-  - {fileID: 8300000, guid: 8987db3ed055861428ee27cc6a0d81c9, type: 3}
-  - {fileID: 8300000, guid: 8a60ce9bce1863c48a57cc3291a8fc85, type: 3}
+  - {fileID: 8300000, guid: 5bde4f5584fe05043848bebd73b5bc16, type: 3}
+  - {fileID: 8300000, guid: c697fc1b89b1a424aa48d3a7fe5e9ad1, type: 3}
   VolumeRange: {x: 0, y: 1}

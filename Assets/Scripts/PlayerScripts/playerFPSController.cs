@@ -250,14 +250,14 @@ public class PlayerFPSController : MonoBehaviour
             weaponManager.SwitchWeapon(scroll > 0 ? 1 : -1);
         }
 
-        // Number key input (1-9)
-        for (int i = 0; i < 9; i++)
-        {
-            if (Input.GetKeyDown((i + 1).ToString()))
-            {
-                weaponManager.SwitchWeaponByIndex(i);
-            }
-        }
+        // // Number key input (1-9)
+        // for (int i = 0; i < 9; i++)
+        // {
+        //     if (Input.GetKeyDown((i + 1).ToString()))
+        //     {
+        //         weaponManager.SwitchWeaponByIndex(i);
+        //     }
+        // }
     }
 
 

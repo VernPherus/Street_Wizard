@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64b44f25f4415e14ea46c802213db3ef, type: 3}
-  m_Name: Default
+  m_Name: MetalSurface
   m_EditorClassIdentifier: 
   ImpactTypeEffects:
-  - ImpactType: {fileID: 0}
-    SurfaceEffect: {fileID: 0}
+  - ImpactType: {fileID: 11400000, guid: 136c9b9319c362443b04675ce59bd105, type: 2}
+    SurfaceEffect: {fileID: 11400000, guid: ee1a7f8eeba9c374d940cb05e7c0f18b, type: 2}
