@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using WeaponsScripts;
 using SpellScripts;
-using WeaponsScripts.Modifiers;
 using System.Collections;
+
 
 
 namespace Managers
@@ -51,6 +51,15 @@ namespace Managers
 
             CanSummon = true;
 
+        }
+
+        public bool RuneIsActive()
+        {
+            if (ActiveRuneObject != null)
+            {
+                return true;
+            }
+            return false;
         }
 
         private bool CheckManaIfCanSummon()

@@ -11,6 +11,7 @@ public class HUDController : MonoBehaviour
 
     [SerializeField] private WeaponManager WeaponManager;
     [SerializeField] private SummonManager SummonManager;
+    [SerializeField] private playerSummonInput summonInput;
     [SerializeField] private PlayerFPSController PlayerFPSController;
     [SerializeField] private PlayerStats PlayerStats;
 
@@ -32,6 +33,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] private GameObject SummonStats = null;
     [SerializeField] private Image RuneContainer = null;
     [SerializeField] private Image SpellSequence = null;
+    [SerializeField] private TextMeshProUGUI InputSequenceTemp = null;
 
     [Header("Player Stats")]
     [SerializeField] private TextMeshProUGUI HealthCounter = null;
@@ -58,6 +60,8 @@ public class HUDController : MonoBehaviour
         HandleWeaponStats();
         HandleDashThreshold();
         HandlePlayerStats();
+        HandleInputCounter();
+        HandleRuneContainer();
     }
 
     // #############################################################################################################
@@ -90,7 +94,10 @@ public class HUDController : MonoBehaviour
 
     public void HandleRuneContainer()
     {
-        SummonStats.SetActive(true);
+        if (SummonManager.RuneIsActive())
+        {
+            SummonStats.SetActive(true);
+        }
     }
 
     // #############################################################################################################
@@ -108,7 +115,10 @@ public class HUDController : MonoBehaviour
         RuneContainer.sprite = RuneIcons[0];
     }
 
-    public void HandleInputCounter() { }
+    public void HandleInputCounter()
+    {
+        //InputSequenceTemp.SetText($"");
+    }
 
     public void HandleUnlockedKeysContainer() { }
 

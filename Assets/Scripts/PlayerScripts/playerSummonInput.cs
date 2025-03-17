@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Managers;
@@ -17,6 +16,7 @@ public class playerSummonInput : MonoBehaviour
 {
 
     [SerializeField] SummonManager summonManager;
+    [SerializeField] HUDController hUDController;
 
     private List<string> Sequence = new List<string>();
     private int maxSequenceLength = 4;
@@ -26,7 +26,10 @@ public class playerSummonInput : MonoBehaviour
     private void Awake()
     {
         summonManager = GetComponent<SummonManager>();
+        hUDController = GameObject.Find("PlayerHUD").GetComponent<HUDController>();
     }
+
+    
 
     public void TranslateInput(Direction inputDirection)
     {
