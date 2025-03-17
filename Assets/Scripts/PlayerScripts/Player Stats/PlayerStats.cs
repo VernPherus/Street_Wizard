@@ -5,20 +5,27 @@ public class PlayerStats : MonoBehaviour
     public PlayerHealth health;
     public PlayerMana mana;
 
-    public int enemyCounter;
-    public int pickupCounter;
-    public int secretCounter;
+    public bool hasRedKey = false;
+    public bool hasGreenKey = false;
 
-    public bool hasRedKey;
-    public bool hasBlueKey;
-    public bool hasYellowKey;
+    public bool hasUnlockedLimitless = false;
+    public bool hasUnlockedBanisher = false;
+    public bool hasUnlockedGatlingWand = false;
+    public bool hasUnlockedBigBore = false;
 
-    public bool hasUnlockedLimitless;
-    public bool hasUnlockedBanisher;
-    public bool hasUnlockedGatlingWand;
-    public bool hasUnlockedBigBore;
+    public int PickupCounter = 0;
+    public int KillCounter = 0;
+    public int SecretCounter = 0;
 
-    public int PickupCounter;
-    public int KillCounter;
-    public int SecretCounter;
+    private void Awake()
+    {
+    }
+
+    public void UnlockRedKey() { hasRedKey = true; }
+    public void UnlockGreendKey() { hasGreenKey = true; }
+
+    public void IncrementKillCounter() { KillCounter++; }
+    public void IncrementSecretCounter() { SecretCounter++; }
+    public void IncrementPickupCounter() { PickupCounter++; }
+
 }

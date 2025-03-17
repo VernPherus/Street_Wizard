@@ -39,6 +39,9 @@ public class HUDController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI HealthCounter = null;
     [SerializeField] private TextMeshProUGUI ManaCounter = null;
 
+    [SerializeField] private Image RedKey;
+    [SerializeField] private Image GreenKey;
+
     [Header("Dialogue Box")]
     [SerializeField] private GameObject DialogueBox = null;
     [SerializeField] private TextMeshProUGUI DialogueText = null;
@@ -52,6 +55,9 @@ public class HUDController : MonoBehaviour
         DialogueBox.SetActive(false);
         SummonStats.SetActive(false);
 
+        RedKey.fillAmount = 0;
+        GreenKey.fillAmount = 0;
+
         Debug.Log("UI Setup complete.");
     }
 
@@ -62,6 +68,7 @@ public class HUDController : MonoBehaviour
         HandlePlayerStats();
         HandleInputCounter();
         HandleRuneContainer();
+        HandleUnlockedKeysContainer();
     }
 
     // #############################################################################################################
@@ -120,7 +127,18 @@ public class HUDController : MonoBehaviour
         //InputSequenceTemp.SetText($"");
     }
 
-    public void HandleUnlockedKeysContainer() { }
+    public void HandleUnlockedKeysContainer()
+    {
+        if (PlayerStats.hasRedKey)
+        {
+            RedKey.fillAmount = 1;
+        }
+
+        if (PlayerStats.hasGreenKey)
+        {
+            GreenKey.fillAmount = 1;
+        }
+    }
 
     // #############################################################################################################
     //* ## DialogueBox logic ##        
@@ -131,6 +149,7 @@ public class HUDController : MonoBehaviour
         DialogueText.SetText(Dialogue);
         StartCoroutine(DialogueBoxTimer(ActiveTime));
     }
+
     private IEnumerator DialogueBoxTimer(int CountDown)
     {
         DialogueBox.SetActive(true);

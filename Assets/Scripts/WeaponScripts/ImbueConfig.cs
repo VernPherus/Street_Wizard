@@ -7,13 +7,8 @@ public class ImbueConfig : ScriptableObject
     [SerializeField] public GameObject[] sfxPrefabs;
     [SerializeField] public ParticleSystem WeaponEffect;
     [SerializeField] public bool isImbued;
-
     [SerializeField] public float DamageMultiplier;
-
     public RuneType currentRune;
-
-    private float moveDuration = 5;
-
     public GameObject ChangeProjectile()
     {
         switch (currentRune)
@@ -31,7 +26,6 @@ public class ImbueConfig : ScriptableObject
         }
         return sfxPrefabs[0];
     }
-
     public void SpawnParticlesOnImbue() { }
 
 }

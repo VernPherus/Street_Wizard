@@ -1,11 +1,10 @@
 using UnityEngine;
-using WeaponsScripts;
 using Managers;
 
 [RequireComponent(typeof(Collider))]
 public class AmmoPickup : MonoBehaviour
 {
-    AmmoPickupData AmmoPickupData;
+    [SerializeField] AmmoPickupData AmmoPickupData;
     public Vector3 SpinDirection = Vector3.up;
 
     private void Update()
