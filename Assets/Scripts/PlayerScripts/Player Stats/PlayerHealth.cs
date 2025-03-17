@@ -31,4 +31,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             OnDeath?.Invoke(transform.position);
         }
     }
+
+    public void GainHealth(float Amount)
+    {
+        CurrentHealth = Mathf.Clamp(CurrentHealth + Amount, 0, MaxHealth);
+    }
 }

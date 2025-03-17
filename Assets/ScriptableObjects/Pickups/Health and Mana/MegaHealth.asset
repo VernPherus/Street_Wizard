@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupType: 0
   Amount: 200
-  IncrementPickupCounter: 1
+  IncrementPickupCounter: 0

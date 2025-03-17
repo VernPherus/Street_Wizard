@@ -113,7 +113,25 @@ public class HUDController : MonoBehaviour
 
     public void HandlePlayerStats()
     {
-        HealthCounter.SetText($"{PlayerStats.health.CurrentHealth}");
+        //* Health
+        float currentHealth = PlayerStats.health.CurrentHealth;
+
+        if (currentHealth <= 25)
+        {
+            HealthCounter.color = Color.red;
+        }
+        else if (currentHealth <= 50)
+        {
+            HealthCounter.color = Color.yellow;
+        }
+        else
+        {
+            HealthCounter.color = Color.white;
+        }
+
+        HealthCounter.SetText($"{currentHealth}");
+
+        //*  Mana
         ManaCounter.SetText($"{PlayerStats.mana.CurrentMana}");
     }
 
