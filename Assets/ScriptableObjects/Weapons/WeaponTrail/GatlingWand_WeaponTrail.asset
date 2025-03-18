@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28543383dcbdf94db67b1cd5d6de212, type: 3}
   m_Name: GatlingWand_WeaponTrail
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: debcb8ca3d25a5d4586cc1a5f80c0091, type: 2}
+  material: {fileID: 2100000, guid: b1db43a800c027b40bc43038cc628c41, type: 2}
   widthCurve:
     serializedVersion: 2
     m_Curve:

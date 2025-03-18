@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   ImpactTypeEffects:
-  - ImpactType: {fileID: 0}
-    SurfaceEffect: {fileID: 0}
+  - ImpactType: {fileID: 11400000, guid: 136c9b9319c362443b04675ce59bd105, type: 2}
+    SurfaceEffect: {fileID: 11400000, guid: a0e77b11d08097c4dae86d63597ec363, type: 2}
+  - ImpactType: {fileID: 11400000, guid: 136c9b9319c362443b04675ce59bd105, type: 2}
+    SurfaceEffect: {fileID: 11400000, guid: adc0b59af73589042aab45a9ce85ec00, type: 2}
+  - ImpactType: {fileID: 11400000, guid: 136c9b9319c362443b04675ce59bd105, type: 2}
+    SurfaceEffect: {fileID: 11400000, guid: ee1a7f8eeba9c374d940cb05e7c0f18b, type: 2}
