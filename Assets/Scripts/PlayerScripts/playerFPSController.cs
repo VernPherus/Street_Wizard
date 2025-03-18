@@ -28,7 +28,6 @@ public class PlayerFPSController : MonoBehaviour
     [SerializeField] private WeaponSwayNBob weaponSwayNBob;
 
 
-
     public event Action OnBeforeMove;
 
     private CharacterController characterController;
@@ -39,6 +38,7 @@ public class PlayerFPSController : MonoBehaviour
 
     private Vector3 currentMovement;
     private float verticalRotation;
+    private float mouseXRotation;
     private bool canDash;
     private bool canImbue;
     public float playerHeight;
@@ -107,7 +107,7 @@ public class PlayerFPSController : MonoBehaviour
 
     private void HandleRotation()
     {
-        float mouseXRotation = inputHandler.LookInput.x * mouseSensitivity;
+        mouseXRotation = inputHandler.LookInput.x * mouseSensitivity;
         transform.Rotate(0, mouseXRotation, 0);
 
         verticalRotation -= inputHandler.LookInput.y * mouseSensitivity;
@@ -146,6 +146,14 @@ public class PlayerFPSController : MonoBehaviour
         // for weapon bob
         weaponSwayNBob.BobOffset(worldDirection);
         weaponSwayNBob.BobRotation(worldDirection);
+    }
+
+    public void Teleport(Vector3 position, Quaternion rotation)
+    {
+        transform.position = position;
+        Physics.SyncTransforms();
+        Debug.Log("Teleporting");
+
     }
 
     // #############################################################################################################
