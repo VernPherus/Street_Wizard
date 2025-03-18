@@ -1,3 +1,4 @@
+
 using TMPro;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField]
     private LayerMask UseLayers;
 
-    public void OnUse()
+    public void OnInteract()
     {
         if (Physics.Raycast(Camera.position, Camera.forward, out RaycastHit hit, MaxUseDistance, UseLayers))
         {
