@@ -40,12 +40,17 @@ public class PlayerActions : MonoBehaviour
             {
                 UseText.SetText("Close \"E\"");
             }
-            else
+            else if (!door.IsOpen && !door.RequiresKey)
             {
                 UseText.SetText("Open \"E\"");
             }
+            else if (!door.IsOpen && door.RequiresKey)
+            {
+                string keytype = door.keyTypeRequired == KeyType.RedKey ? "red key" : "green key";
+                UseText.SetText($"Requires {keytype}");
+            }
             UseText.gameObject.SetActive(true);
-            UseText.transform.position = hit.point - (hit.point - Camera.position).normalized * 0.01f;
+            UseText.transform.position = hit.point - (hit.point - Camera.position).normalized * 0.1f;
             UseText.transform.rotation = Quaternion.LookRotation((hit.point - Camera.position).normalized);
         }
         else

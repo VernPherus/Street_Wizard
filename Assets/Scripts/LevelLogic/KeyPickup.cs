@@ -1,7 +1,7 @@
 using UnityEngine;
 using Managers;
 
-enum KeyType
+public enum KeyType
 {
     RedKey,
     GreenKey

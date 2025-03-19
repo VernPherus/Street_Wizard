@@ -4,6 +4,14 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public bool IsOpen = false;
+
+    [SerializeField]
+    public bool RequiresKey = false;
+    [SerializeField]
+    public KeyType keyTypeRequired;
+    [SerializeField]
+    private PlayerStats playerStats;
+
     [SerializeField]
     private bool IsRotatingDoor = true;
     [SerializeField]
@@ -35,7 +43,7 @@ public class Door : MonoBehaviour
 
     public void Open(Vector3 UserPosition)
     {
-        if (!IsOpen)
+        if (!IsOpen && !RequiresKey)
         {
             if (AnimationCoroutine != null)
             {
@@ -53,6 +61,53 @@ public class Door : MonoBehaviour
                 AnimationCoroutine = StartCoroutine(DoSlidingOpen());
             }
         }
+
+        if (!IsOpen && RequiresKey)
+        {
+            KeyedDoorOpen(UserPosition);
+        }
+    }
+
+    public void KeyedDoorOpen(Vector3 UserPosition)
+    {
+        if (playerStats.hasGreenKey && keyTypeRequired == KeyType.GreenKey)
+        {
+            if (AnimationCoroutine != null)
+            {
+                StopCoroutine(AnimationCoroutine);
+            }
+
+            if (IsRotatingDoor)
+            {
+                float dot = Vector3.Dot(Forward, (UserPosition - transform.position).normalized);
+                Debug.Log($"Dot: {dot.ToString("N3")}");
+                AnimationCoroutine = StartCoroutine(DoRotationOpen(dot));
+            }
+            else
+            {
+                AnimationCoroutine = StartCoroutine(DoSlidingOpen());
+            }
+        }
+
+        if (playerStats.hasRedKey && keyTypeRequired == KeyType.RedKey)
+        {
+            if (AnimationCoroutine != null)
+            {
+                StopCoroutine(AnimationCoroutine);
+            }
+
+            if (IsRotatingDoor)
+            {
+                float dot = Vector3.Dot(Forward, (UserPosition - transform.position).normalized);
+                Debug.Log($"Dot: {dot.ToString("N3")}");
+                AnimationCoroutine = StartCoroutine(DoRotationOpen(dot));
+            }
+            else
+            {
+                AnimationCoroutine = StartCoroutine(DoSlidingOpen());
+            }
+        }
+
     }
 
     private IEnumerator DoRotationOpen(float ForwardAmount)
