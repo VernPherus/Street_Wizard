@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using WeaponsScripts;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -11,10 +13,7 @@ public class PlayerStats : MonoBehaviour
     public bool hasRedKey = false;
     public bool hasGreenKey = false;
 
-    public bool hasUnlockedLimitless = false;
-    public bool hasUnlockedBanisher = false;
-    public bool hasUnlockedGatlingWand = false;
-    public bool hasUnlockedBigBore = false;
+    public List<WeaponType> unlockedWeapons = new();
 
     public int PickupCounter = 0;
     public int KillCounter = 0;
@@ -22,6 +21,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
+        unlockedWeapons.Add(WeaponType.RatFood);
     }
 
     private void Start()
@@ -38,7 +38,17 @@ public class PlayerStats : MonoBehaviour
 
     private void HandleDeath(Vector3 position)
     {
-        
+
+    }
+
+    public void AddWeapon(WeaponType weapon)
+    {
+        unlockedWeapons.Add(weapon);
+    }
+
+    public bool CheckForWeaponUnlock(WeaponType weaponType)
+    {
+        return unlockedWeapons.Contains(weaponType);
     }
 
 }

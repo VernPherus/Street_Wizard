@@ -43,6 +43,7 @@ public class PlayerFPSController : MonoBehaviour
     private bool canDash;
     private bool canImbue;
     public float playerHeight;
+    public bool IsMouseLookEnabled;
 
     public CharacterController Player { get; set; }
     public Camera PlayerCamera { get; set; }
@@ -89,13 +90,19 @@ public class PlayerFPSController : MonoBehaviour
 
         canDash = true;
         canImbue = true;
+        EnableMouseLook();
         playerHeight = characterController.height;
     }
 
     private void Update()
     {
         HandleMovement();
-        HandleRotation();
+        
+        if (IsMouseLookEnabled)
+        {
+            HandleRotation();
+        }
+
         HandleAttack();
         HandleSummonInput();
         HandleWeaponSwitching();
@@ -109,6 +116,8 @@ public class PlayerFPSController : MonoBehaviour
 
     private void HandleRotation()
     {
+
+
         mouseXRotation = inputHandler.LookInput.x * mouseSensitivity;
         transform.Rotate(0, mouseXRotation, 0);
 
@@ -275,7 +284,18 @@ public class PlayerFPSController : MonoBehaviour
         if (inputHandler.EscapteTriggered)
         {
             pauseUI.PauseGame();
+            DisableMouseLook();
         }
+    }
+
+    public void DisableMouseLook()
+    {
+        IsMouseLookEnabled = false;
+    }
+
+    public void EnableMouseLook()
+    {
+        IsMouseLookEnabled = true;
     }
 
 }

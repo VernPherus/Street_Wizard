@@ -11,6 +11,7 @@ public class GunPickup : MonoBehaviour
     [SerializeField]
     private UnlockPickupData unlockPickupData;
 
+    [SerializeField]
     private PlayerStats playerStats;
 
     private void Update()
@@ -22,7 +23,8 @@ public class GunPickup : MonoBehaviour
     {
         if (other.TryGetComponent(out WeaponManager WeaponManager))
         {
-            WeaponManager.PickupGun(Weapon);
+            playerStats.AddWeapon(Weapon.weaponType);
+            WeaponManager.PickupWeapon(Weapon.weaponType);
 
             Destroy(gameObject);
         }

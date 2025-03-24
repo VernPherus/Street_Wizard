@@ -11,6 +11,8 @@ public class PauseScreen : MonoBehaviour
 
     [SerializeField] private GameObject MainMenu;
 
+    [SerializeField] private PlayerFPSController playerFPSController;
+
     private void Awake()
     {
         PauseMenu.SetActive(false);
@@ -32,6 +34,7 @@ public class PauseScreen : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        playerFPSController.EnableMouseLook();
     }
 
     public void QuitGame()
