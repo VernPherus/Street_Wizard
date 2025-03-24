@@ -26,6 +26,7 @@ public class PlayerFPSController : MonoBehaviour
     [SerializeField] private playerSummonInput summonInput;
     [SerializeField] private SummonManager summonManager;
     [SerializeField] private WeaponSwayNBob weaponSwayNBob;
+    [SerializeField] private PauseScreen pauseUI;
 
 
     public event Action OnBeforeMove;
@@ -98,6 +99,7 @@ public class PlayerFPSController : MonoBehaviour
         HandleAttack();
         HandleSummonInput();
         HandleWeaponSwitching();
+        HandlePause();
     }
 
     // #############################################################################################################
@@ -268,5 +270,12 @@ public class PlayerFPSController : MonoBehaviour
         // }
     }
 
+    private void HandlePause()
+    {
+        if (inputHandler.EscapteTriggered)
+        {
+            pauseUI.PauseGame();
+        }
+    }
 
 }

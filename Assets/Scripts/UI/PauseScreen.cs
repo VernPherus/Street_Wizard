@@ -1,18 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class PauseScreen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject Player;
+
+    [SerializeField] private GameObject PlayerHUD;
+
+    [SerializeField] private GameObject PauseMenu;
+
+    [SerializeField] private GameObject MainMenu;
+
+    private void Awake()
     {
-        
+        PauseMenu.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PauseGame()
     {
-        
+        PauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void ResumeGame()
+    {
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#endif
     }
 }

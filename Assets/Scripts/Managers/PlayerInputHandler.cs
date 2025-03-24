@@ -4,7 +4,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class    PlayerInputHandler : MonoBehaviour
+public class PlayerInputHandler : MonoBehaviour
 {
     [Header("Input Action Asset")]
     [SerializeField] private InputActionAsset playerControls;
@@ -24,6 +24,7 @@ public class    PlayerInputHandler : MonoBehaviour
     [SerializeField] private string sprint = "Sprint";
     [SerializeField] private string jump = "Jump";
     [SerializeField] private string dash = "Dash";
+    [SerializeField] private string escape = "Escape";
 
     private InputAction moveAction;
     private InputAction lookAction;
@@ -36,6 +37,7 @@ public class    PlayerInputHandler : MonoBehaviour
     private InputAction sprintAction;
     private InputAction jumpAction;
     private InputAction dashAction;
+    private InputAction escapeAction;
 
     // Check input property
     public Vector2 MoveInput { get; private set; }
@@ -49,6 +51,7 @@ public class    PlayerInputHandler : MonoBehaviour
     public float SprintTriggered { get; private set; }
     public bool JumpTriggered { get; private set; }
     public bool DashTriggered { get; private set; }
+    public bool EscapteTriggered { get; private set; }
 
     public static PlayerInputHandler Instance { get; private set; }
 
@@ -78,6 +81,7 @@ public class    PlayerInputHandler : MonoBehaviour
         sprintAction = playerControls.FindActionMap(actionMapName).FindAction(sprint);
         jumpAction = playerControls.FindActionMap(actionMapName).FindAction(jump);
         dashAction = playerControls.FindActionMap(actionMapName).FindAction(dash);
+        escapeAction = playerControls.FindActionMap(actionMapName).FindAction(escape);
 
         RegisterInputActions();
     }
@@ -120,6 +124,10 @@ public class    PlayerInputHandler : MonoBehaviour
 
         dashAction.performed += context => DashTriggered = true;
         dashAction.canceled += context => DashTriggered = false;
+
+        escapeAction.performed += context => EscapteTriggered = true;
+        escapeAction.canceled += context => EscapteTriggered = false;
+
     }
 
     private void OnEnable()
@@ -135,6 +143,7 @@ public class    PlayerInputHandler : MonoBehaviour
         sprintAction.Enable();
         jumpAction.Enable();
         dashAction.Enable();
+        escapeAction.Enable();
     }
 
     private void OnDisable()
@@ -150,5 +159,6 @@ public class    PlayerInputHandler : MonoBehaviour
         sprintAction.Disable();
         jumpAction.Disable();
         dashAction.Disable();
+        escapeAction.Disable();
     }
 }

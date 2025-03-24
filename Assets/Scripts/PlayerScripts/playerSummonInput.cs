@@ -16,7 +16,7 @@ public class playerSummonInput : MonoBehaviour
 {
 
     [SerializeField] SummonManager summonManager;
-    [SerializeField] HUDController hUDController;
+    [SerializeField] HUDController hudController;
 
     private List<string> Sequence = new List<string>();
     private int maxSequenceLength = 4;
@@ -26,7 +26,7 @@ public class playerSummonInput : MonoBehaviour
     private void Awake()
     {
         summonManager = GetComponent<SummonManager>();
-        hUDController = GameObject.Find("PlayerHUD").GetComponent<HUDController>();
+        // hudController = GameObject.Find("PlayerHUD").GetComponent<HUDController>();
     }
 
     

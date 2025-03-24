@@ -13,25 +13,20 @@ public class MainMenuController : MonoBehaviour
     private GameObject MenuCamera;
 
     [SerializeField]
-    private GameObject PauseMenu;
+
+    private bool IsOnMainMenu = true;
 
     public void OnEscape()
     {
-        Player.SetActive(false);
-        PlayerHUD.SetActive(false);
-
-        Time.timeScale = 0;
-
-        PauseMenu.SetActive(true);
+        Debug.Log("Pause Triggered");
     }
 
     private void Awake()
     {
         Player.SetActive(false);
         PlayerHUD.SetActive(false);
-        PauseMenu.SetActive(false);
     }
-    
+
     public void PlayGame()
     {
         Player.SetActive(true);
@@ -39,6 +34,7 @@ public class MainMenuController : MonoBehaviour
         PlayerHUD.SetActive(true);
 
         MenuCamera.SetActive(false);
+        IsOnMainMenu = false;
     }
 
     public void QuitGame()
@@ -49,15 +45,6 @@ public class MainMenuController : MonoBehaviour
 #endif
     }
 
-    public void ResumeGame()
-    {
-        Player.SetActive(true);
-        PlayerHUD.SetActive(true);
-
-        Time.timeScale = 1;
-
-        PauseMenu.SetActive(false);
-    }
 
     public void ReturnToMenu()
     {
@@ -66,6 +53,7 @@ public class MainMenuController : MonoBehaviour
         PlayerHUD.SetActive(false);
 
         MenuCamera.SetActive(true);
+        IsOnMainMenu = true;
     }
 
     //     public VisualElement ui;

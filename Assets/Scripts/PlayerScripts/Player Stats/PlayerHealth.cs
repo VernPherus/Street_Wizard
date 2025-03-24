@@ -15,6 +15,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public event IDamageable.TakeDamageEvent OnTakeDamage;
     public event IDamageable.DeathEvent OnDeath;
 
+
+
     public void TakeDamage(float Damage, DamageType damageType = DamageType.defaultDamage)
     {
         float damageTaken = Mathf.Clamp(Damage, 0, CurrentHealth);

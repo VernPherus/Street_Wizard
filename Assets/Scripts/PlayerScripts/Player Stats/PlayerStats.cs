@@ -5,6 +5,9 @@ public class PlayerStats : MonoBehaviour
     public PlayerHealth health;
     public PlayerMana mana;
 
+    [SerializeField]
+    private GameObject deathScreen;
+
     public bool hasRedKey = false;
     public bool hasGreenKey = false;
 
@@ -21,11 +24,21 @@ public class PlayerStats : MonoBehaviour
     {
     }
 
+    private void Start()
+    {
+        health.OnDeath += HandleDeath;
+    }
+
     public void UnlockRedKey() { hasRedKey = true; }
     public void UnlockGreendKey() { hasGreenKey = true; }
 
     public void IncrementKillCounter() { KillCounter++; }
     public void IncrementSecretCounter() { SecretCounter++; }
     public void IncrementPickupCounter() { PickupCounter++; }
+
+    private void HandleDeath(Vector3 position)
+    {
+        
+    }
 
 }
