@@ -1,23 +1,29 @@
+using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class DeathScreen : MonoBehaviour
+public class win : MonoBehaviour
 {
     [SerializeField] private GameObject playerGameObject;
     [SerializeField] private PlayerFPSController playerFPSController;
+    [SerializeField] private GameObject winUI;
 
     private string scene;
 
     private void Awake()
     {
-        gameObject.SetActive(false);
+        winUI.SetActive(false);
         scene = SceneManager.GetActiveScene().name;
     }
 
-    public void ActivateDeathScreen()
+    void OnTriggerEnter(Collider other)
     {
-        gameObject.SetActive(true);
+        ActivateWinScreen();
+    }
+
+    public void ActivateWinScreen()
+    {
+        winUI.SetActive(true);
         playerGameObject.transform.localRotation = Quaternion.Euler(-90, 0, 0);
         playerFPSController.DisableAllInput();
 

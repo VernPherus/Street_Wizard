@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Banisher_AmmoConfig
   m_EditorClassIdentifier: 
   MaxAmmo: 50
-  CurrentAmmo: 20
+  CurrentAmmo: 15
+  IsInfinite: 0

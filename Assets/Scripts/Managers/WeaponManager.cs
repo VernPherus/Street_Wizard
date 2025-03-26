@@ -28,7 +28,7 @@ namespace Managers
         {
             foreach (var weaponDef in weapons)
             {
-                WeaponScriptableObject weaponInstance = Instantiate(weaponDef);
+                WeaponScriptableObject weaponInstance = weaponDef.Clone() as WeaponScriptableObject;
                 ActiveWeapons.Add(weaponDef.weaponType, weaponInstance);
             }
 

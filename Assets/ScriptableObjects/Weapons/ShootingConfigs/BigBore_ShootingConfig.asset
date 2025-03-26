@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6975118deebd48c4eafbc3aa99577f83, type: 3}
   m_Name: BigBore_ShootingConfig
   m_EditorClassIdentifier: 
-  IsHitscan: 0
   firingType: 0
   projectilePrefab: {fileID: 3912574498303398443, guid: b3843c6569a6a5c40a49c0276618543c, type: 3}
   BulletSpawnForce: 1000
@@ -20,11 +19,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 193
   FireRate: 1
-  BulletsPerShot: 6
-  AimType: 0
+  BulletsPerShot: 1
   RecoilRecoverySpeed: 1
   MaxSpreadTime: 1
   BulletWeight: 0.1
+  AimType: 0
   SpreadType: 1
   Spread: {x: 0, y: 0, z: 0}
   MinSpread: {x: 0, y: 0, z: 0}

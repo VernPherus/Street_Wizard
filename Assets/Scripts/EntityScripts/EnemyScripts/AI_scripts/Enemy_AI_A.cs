@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class Enemy_AI_A : MonoBehaviour
 {
+    public EnemyHealth health;
+
     public NavMeshAgent agent;
     public Transform player;
 
@@ -33,6 +35,8 @@ public class Enemy_AI_A : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Idle();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
+
+        health.OnDeath += SelfDestruct;
     }
 
     private void Idle()
@@ -99,4 +103,10 @@ public class Enemy_AI_A : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
+
+    private void SelfDestruct(Vector3 position)
+    {
+        Destroy(gameObject);
+    }
+
 }

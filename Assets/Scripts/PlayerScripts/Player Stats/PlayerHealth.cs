@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField]
     private float _CurrentHealth = 100f;
     [SerializeField]
-    private float _MaxHealth = 200f;
+    private float _MaxHealth = 100f;
 
     public float CurrentHealth { get => _CurrentHealth; private set => _CurrentHealth = value; }
 

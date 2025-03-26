@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     public PlayerMana mana;
 
     [SerializeField]
-    private GameObject deathScreen;
+    private DeathScreen deathScreen;
 
     public bool hasRedKey = false;
     public bool hasGreenKey = false;
@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
 
     private void HandleDeath(Vector3 position)
     {
-
+        deathScreen.ActivateDeathScreen();
     }
 
     public void AddWeapon(WeaponType weapon)

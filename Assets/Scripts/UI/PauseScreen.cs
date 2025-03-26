@@ -34,7 +34,7 @@ public class PauseScreen : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        playerFPSController.EnableMouseLook();
+        playerFPSController.EnableAllInput();
     }
 
     public void QuitGame()

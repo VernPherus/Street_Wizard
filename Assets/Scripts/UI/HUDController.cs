@@ -33,11 +33,12 @@ public class HUDController : MonoBehaviour
     [SerializeField] private GameObject SummonStats = null;
     [SerializeField] private Image RuneContainer = null;
     [SerializeField] private Image SpellSequence = null;
-    [SerializeField] private TextMeshProUGUI InputSequenceTemp = null;
+    //[SerializeField] private TextMeshProUGUI InputSequenceTemp = null;
 
     [Header("Player Stats")]
     [SerializeField] private TextMeshProUGUI HealthCounter = null;
     [SerializeField] private TextMeshProUGUI ManaCounter = null;
+    [SerializeField] private Image BloodOverlay = null;
 
     [SerializeField] private Image RedKey;
     [SerializeField] private Image GreenKey;
@@ -54,6 +55,7 @@ public class HUDController : MonoBehaviour
 
         DialogueBox.SetActive(false);
         SummonStats.SetActive(false);
+        
 
         RedKey.fillAmount = 0;
         GreenKey.fillAmount = 0;
@@ -69,6 +71,7 @@ public class HUDController : MonoBehaviour
         HandleInputCounter();
         HandleRuneContainer();
         HandleUnlockedKeysContainer();
+        HandleBloodOverlay();
     }
 
     // #############################################################################################################
@@ -138,6 +141,15 @@ public class HUDController : MonoBehaviour
     public void HandleManaCounter()
     {
         RuneContainer.sprite = RuneIcons[0];
+    }
+
+    public void HandleBloodOverlay()
+    {
+        float currentHealth = PlayerStats.health.CurrentHealth;
+        float maxHealth = PlayerStats.health.MaxHealth;
+        float opacity = Mathf.Clamp01(1 - (currentHealth / maxHealth));
+
+        BloodOverlay.color = new Color(BloodOverlay.color.r, BloodOverlay.color.g, BloodOverlay.color.b, opacity);
     }
 
     public void HandleInputCounter()
